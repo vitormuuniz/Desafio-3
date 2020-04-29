@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name="company_table")
 public class Company implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -16,13 +16,13 @@ public class Company implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY, generator="seq_company")
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 60)
 	private String name;
 	@Column(nullable = false)
-	private String code;
-	@Column(nullable = false)
+	private int code;
+	@Column(nullable = false, length = 15)
 	private String phone;
-	@Column(nullable = false)
+	@Column(nullable = false, length = 60)
 	private String type;
 	
 	public Company() {
@@ -45,11 +45,11 @@ public class Company implements Serializable {
 		this.name = name;
 	}
 
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(int code) {
 		this.code = code;
 	}
 
@@ -72,6 +72,4 @@ public class Company implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
 }

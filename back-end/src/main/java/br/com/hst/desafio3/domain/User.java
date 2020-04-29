@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-@Entity
+@Entity(name="user_table")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -19,11 +19,11 @@ public class User implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY, generator="seq_user")
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 60)
 	private String name;
-	@Column(nullable = false)
+	@Column(nullable = false, length = 60)
 	private String email;
-	@Column(nullable = false)
+	@Column(nullable = false, length = 60)
 	private String password;
 	@OneToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name = "company_ID", nullable = false)
@@ -76,6 +76,4 @@ public class User implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
 }
