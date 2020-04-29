@@ -2,13 +2,13 @@ package br.com.hst.desafio3.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
@@ -56,13 +56,13 @@ public class Controller {
 		// sejam passados parametros
 
 		@GetMapping("/users") // dto = saem da api e é retornado para o cliente
-		public ResponseEntity<List<UserDto>> listAllCustomers(@RequestParam(required = false) String name,
+		public Page<UserDto> listAllCustomers(@RequestParam(required = false) String name,
 				@PageableDefault(sort = "id", direction = Direction.DESC, page = 0, size = 10) Pageable pagination) throws URISyntaxException {
 
 			if (name == null) 
-				return ResponseEntity.ok(UserDto.converter(userRepository.findAll()));
+				return UserDto.converter(userRepository.findAll(pagination));
 			else
-				return ResponseEntity.ok(UserDto.converter(userRepository.findByName(name, pagination)));
+				return UserDto.converter(userRepository.findByName(name, pagination));
 		}
 
 		// @PathVariable indica que esse 'id' virá através da url com /topicos/id
