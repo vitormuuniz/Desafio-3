@@ -24,9 +24,12 @@ public class Company implements Serializable {
 	private String phone;
 	@Column(nullable = false, length = 60)
 	private String type;
-	
-	public Company() {
-		
+
+	public Company(String name, int code, String phone, String type) {
+		this.name = name;
+		this.code = code;
+		this.phone = phone;
+		this.type = type;
 	}
 
 	public Long getId() {

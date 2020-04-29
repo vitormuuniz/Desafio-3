@@ -2,6 +2,7 @@ package br.com.hst.desafio3.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -22,8 +23,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import br.com.hst.desafio3.controller.dto.CompanyDto;
 import br.com.hst.desafio3.controller.dto.UserDto;
+import br.com.hst.desafio3.controller.form.CompanyForm;
 import br.com.hst.desafio3.controller.form.UserForm;
+import br.com.hst.desafio3.domain.Company;
 import br.com.hst.desafio3.domain.User;
 import br.com.hst.desafio3.repository.CompanyRepository;
 import br.com.hst.desafio3.repository.UserRepository;
@@ -85,5 +89,23 @@ public class Controller {
 				return ResponseEntity.ok().build();
 			} else
 				return ResponseEntity.notFound().build();
+		}
+		
+		@PostMapping("/companies") 
+		public ResponseEntity<CompanyDto> registerCompany(@RequestBody @Valid CompanyForm form, UriComponentsBuilder uriBuilder) {
+			Company company = form.returnCompany();
+			companyRepository.save(company);
+			URI uri = uriBuilder.path("/company/{id}").buildAndExpand(company.getId()).toUri();
+			return ResponseEntity.created(uri).body(new CompanyDto(company));
+		}
+		
+		@GetMapping("/companies") // dto = saem da api e é retornado para o cliente
+		public Page<CompanyDto> listAllCompanies(@RequestParam(required = false) String name,
+				@PageableDefault(sort = "id", direction = Direction.DESC, page = 0, size = 10) Pageable pagination) throws URISyntaxException {
+
+			if (name == null) 
+				return CompanyDto.converter(companyRepository.findAll(pagination));
+			else
+				return CompanyDto.converter(companyRepository.findByName(name, pagination));
 		}
 }
