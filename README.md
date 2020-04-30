@@ -4,7 +4,7 @@
 	
   	1 - Modelling a relational database (PostgreSQL)
 	
-	2 - Create a card to DEV-DATA team to crete a database on our test environment
+	2 - Create a card to DEV-DATA team to create a database on our test environment
   
 	3 - Modelling the application architeture in micro-services
   
