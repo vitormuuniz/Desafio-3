@@ -1,4 +1,4 @@
-package br.com.hst.commons.controller;
+package br.com.hst.desafio3.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -24,14 +24,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.hst.commons.controller.dto.CompanyDto;
-import br.com.hst.commons.controller.dto.UserDto;
-import br.com.hst.commons.controller.form.CompanyForm;
-import br.com.hst.commons.controller.form.UserForm;
-import br.com.hst.commons.domain.Company;
-import br.com.hst.commons.domain.User;
-import br.com.hst.commons.repository.CompanyRepository;
-import br.com.hst.commons.repository.UserRepository;
+import br.com.hst.desafio3.domain.Company;
+import br.com.hst.desafio3.domain.User;
+import br.com.hst.desafio3.dto.CompanyDto;
+import br.com.hst.desafio3.dto.UserDto;
+import br.com.hst.desafio3.form.CompanyForm;
+import br.com.hst.desafio3.form.UserForm;
+import br.com.hst.desafio3.repository.CompanyRepository;
+import br.com.hst.desafio3.repository.UserRepository;
 
 @RestController
 public class Controller {

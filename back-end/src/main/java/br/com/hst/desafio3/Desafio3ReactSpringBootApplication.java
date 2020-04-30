@@ -1,13 +1,13 @@
-package br.com.hst.commons;
+package br.com.hst.desafio3;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CommonsApplication {
+public class Desafio3ReactSpringBootApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CommonsApplication.class, args);
+		SpringApplication.run(Desafio3ReactSpringBootApplication.class, args);
 	}
 
 }

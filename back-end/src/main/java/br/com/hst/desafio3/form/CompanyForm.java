@@ -1,7 +1,7 @@
-package br.com.hst.commons.controller.form;
+package br.com.hst.desafio3.form;
 
-import br.com.hst.commons.domain.Company;
-import br.com.hst.commons.repository.CompanyRepository;
+import br.com.hst.desafio3.domain.Company;
+import br.com.hst.desafio3.repository.CompanyRepository;
 
 public class CompanyForm {
 	
