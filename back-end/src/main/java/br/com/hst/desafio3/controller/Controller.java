@@ -2,7 +2,6 @@ package br.com.hst.desafio3.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -42,23 +41,14 @@ public class Controller {
 	@Autowired
 	CompanyRepository companyRepository;
 	
-	@PostMapping("/users") // chegam do cliente para a api
+	@PostMapping("/users") 
 	public ResponseEntity<UserDto> registerCustomer(@RequestBody @Valid UserForm form, UriComponentsBuilder uriBuilder) {
 		User user = form.returnCustomer(companyRepository);
 		userRepository.save(user);
 
-		// path indica o caminho do recurso sendo chamado (pra nao passar o caminho
-		// completo)
-		// buildAndExpend serve para pegar e substituir o id em {id} dinamicamente
-		// toUri para transformar na uri completa
 		URI uri = uriBuilder.path("/customers/{id}").buildAndExpand(user.getId()).toUri();
 		return ResponseEntity.created(uri).body(new UserDto(user));
 	}
-	
-	// @RequestParam indica que os parametros irão vir pela url e que são
-		// obrigatórios
-		// @PageableDefault serve para dizer qual ordenação deverá ser feita caso não
-		// sejam passados parametros
 
 		@GetMapping("/users") // dto = saem da api e é retornado para o cliente
 		public Page<UserDto> listAllCustomers(@RequestParam(required = false) String name,
@@ -70,8 +60,6 @@ public class Controller {
 				return UserDto.converter(userRepository.findByName(name, pagination));
 		}
 
-		// @PathVariable indica que esse 'id' virá através da url com /topicos/id
-		// inves de ser passado com '?id='
 		@GetMapping("/users/{id}")
 		public ResponseEntity<UserDto> listOneCustomer(@PathVariable Long id) {
 			Optional<User> user = userRepository.findById(id);
@@ -79,6 +67,18 @@ public class Controller {
 				return ResponseEntity.ok(new UserDto(user.get()));
 			else
 				return ResponseEntity.notFound().build();
+		}
+		
+		@PutMapping("/users/{id}")
+		@Transactional
+		public ResponseEntity<UserDto> updateUser(@PathVariable Long id, @RequestBody @Valid UserForm form,
+				UriComponentsBuilder uriBuilder) {
+			Optional<User> userOp = userRepository.findById(id);
+			if (userOp.isPresent()) {
+				User user = form.updateCompanyForm(id, userRepository, companyRepository);
+				return ResponseEntity.ok(new UserDto(user));
+			}
+			return ResponseEntity.notFound().build();
 		}
 		
 		@DeleteMapping("/users/{id}")
@@ -119,6 +119,18 @@ public class Controller {
 				return ResponseEntity.notFound().build();
 		}
 		
+		@PutMapping("/companies/{id}")
+		@Transactional
+		public ResponseEntity<CompanyDto> updateCompany(@PathVariable Long id, @RequestBody @Valid CompanyForm form,
+				UriComponentsBuilder uriBuilder) {
+			Optional<Company> companyOp = companyRepository.findById(id);
+			if (companyOp.isPresent()) {
+				Company company = form.updateCompanyForm(id, companyRepository);
+				return ResponseEntity.ok(new CompanyDto(company));
+			}
+			return ResponseEntity.notFound().build();
+		}
+		
 		@DeleteMapping("/companies/{id}")
 		@Transactional
 		public ResponseEntity<?> deleteCompany(@PathVariable Long id) {
@@ -128,17 +140,5 @@ public class Controller {
 				return ResponseEntity.ok().build();
 			} else
 				return ResponseEntity.notFound().build();
-		}
-		
-		@PutMapping("/companies/{id}")
-		@Transactional
-		public ResponseEntity<CompanyDto> updateCompany(@PathVariable Long id, @RequestBody @Valid CompanyForm form,
-				UriComponentsBuilder uriBuilder) {
-			Optional<Company> companyOptional = companyRepository.findById(id);
-			if (companyOptional.isPresent()) {
-				Company company = form.updateCompanyForm(id, companyRepository);
-				return ResponseEntity.ok(new CompanyDto(company));
-			}
-			return ResponseEntity.notFound().build();
 		}
 }
