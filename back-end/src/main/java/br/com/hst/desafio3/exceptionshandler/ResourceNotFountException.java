@@ -1,4 +1,4 @@
-package br.com.hst.commons.exceptions;
+package br.com.hst.desafio3.exceptionshandler;
 
 public class ResourceNotFountException extends RuntimeException {
 	private static final long serialVersionUID = 1L;

@@ -1,4 +1,4 @@
-package br.com.hst.commons.controller.handler;
+package br.com.hst.desafio3.exceptionshandler;
 
 import java.io.Serializable;
 import java.time.Instant;
