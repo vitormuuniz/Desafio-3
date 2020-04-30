@@ -16,3 +16,5 @@
 		    5 - Must have searching and insertion of companies and users in database
             
    	4 - Keep the service running in the DEV-INTERNSHIP Virtual Machine
+	
+	### To use the documentation you need run application and access this link: http://localhost:8080/swagger-ui.html#/
