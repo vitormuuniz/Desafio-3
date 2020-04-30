@@ -1,4 +1,4 @@
-# Desafio-3
+# Desafio 3
 
 #### Internship Challenge goals:
 
