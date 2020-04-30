@@ -1,4 +1,4 @@
-package br.com.hst.desafio3.controller;
+package br.com.hst.commons.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -18,19 +18,20 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.hst.desafio3.controller.dto.CompanyDto;
-import br.com.hst.desafio3.controller.dto.UserDto;
-import br.com.hst.desafio3.controller.form.CompanyForm;
-import br.com.hst.desafio3.controller.form.UserForm;
-import br.com.hst.desafio3.domain.Company;
-import br.com.hst.desafio3.domain.User;
-import br.com.hst.desafio3.repository.CompanyRepository;
-import br.com.hst.desafio3.repository.UserRepository;
+import br.com.hst.commons.controller.dto.CompanyDto;
+import br.com.hst.commons.controller.dto.UserDto;
+import br.com.hst.commons.controller.form.CompanyForm;
+import br.com.hst.commons.controller.form.UserForm;
+import br.com.hst.commons.domain.Company;
+import br.com.hst.commons.domain.User;
+import br.com.hst.commons.repository.CompanyRepository;
+import br.com.hst.commons.repository.UserRepository;
 
 @RestController
 public class Controller {
@@ -99,7 +100,7 @@ public class Controller {
 			return ResponseEntity.created(uri).body(new CompanyDto(company));
 		}
 		
-		@GetMapping("/companies") // dto = saem da api e é retornado para o cliente
+		@GetMapping("/companies")
 		public Page<CompanyDto> listAllCompanies(@RequestParam(required = false) String name,
 				@PageableDefault(sort = "id", direction = Direction.DESC, page = 0, size = 10) Pageable pagination) throws URISyntaxException {
 
@@ -107,5 +108,37 @@ public class Controller {
 				return CompanyDto.converter(companyRepository.findAll(pagination));
 			else
 				return CompanyDto.converter(companyRepository.findByName(name, pagination));
+		}
+		
+		@GetMapping("/companies/{id}")
+		public ResponseEntity<CompanyDto> listOneCompany(@PathVariable Long id) {
+			Optional<Company> company = companyRepository.findById(id);
+			if (company.isPresent())
+				return ResponseEntity.ok(new CompanyDto(company.get()));
+			else
+				return ResponseEntity.notFound().build();
+		}
+		
+		@DeleteMapping("/companies/{id}")
+		@Transactional
+		public ResponseEntity<?> deleteCompany(@PathVariable Long id) {
+			Optional<Company> company = companyRepository.findById(id);
+			if (company.isPresent()) {
+				companyRepository.deleteById(id);
+				return ResponseEntity.ok().build();
+			} else
+				return ResponseEntity.notFound().build();
+		}
+		
+		@PutMapping("/companies/{id}")
+		@Transactional
+		public ResponseEntity<CompanyDto> updateCompany(@PathVariable Long id, @RequestBody @Valid CompanyForm form,
+				UriComponentsBuilder uriBuilder) {
+			Optional<Company> companyOptional = companyRepository.findById(id);
+			if (companyOptional.isPresent()) {
+				Company company = form.updateCompanyForm(id, companyRepository);
+				return ResponseEntity.ok(new CompanyDto(company));
+			}
+			return ResponseEntity.notFound().build();
 		}
 }

@@ -1,8 +1,8 @@
-package br.com.hst.desafio3.controller.dto;
+package br.com.hst.commons.controller.dto;
 
 import org.springframework.data.domain.Page;
 
-import br.com.hst.desafio3.domain.Company;
+import br.com.hst.commons.domain.Company;
 
 public class CompanyDto {
 	

@@ -1,4 +1,4 @@
-package br.com.hst.desafio3.domain;
+package br.com.hst.commons.domain;
 
 import java.io.Serializable;
 

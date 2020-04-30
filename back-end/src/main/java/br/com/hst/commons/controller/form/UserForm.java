@@ -1,10 +1,10 @@
-package br.com.hst.desafio3.controller.form;
+package br.com.hst.commons.controller.form;
 
 import com.sun.istack.NotNull;
 
-import br.com.hst.desafio3.domain.Company;
-import br.com.hst.desafio3.domain.User;
-import br.com.hst.desafio3.repository.CompanyRepository;
+import br.com.hst.commons.domain.Company;
+import br.com.hst.commons.domain.User;
+import br.com.hst.commons.repository.CompanyRepository;
 
 public class UserForm {
 	

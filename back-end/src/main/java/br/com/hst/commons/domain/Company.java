@@ -1,4 +1,4 @@
-package br.com.hst.desafio3.domain;
+package br.com.hst.commons.domain;
 
 import java.io.Serializable;
 
@@ -25,6 +25,9 @@ public class Company implements Serializable {
 	@Column(nullable = false, length = 60)
 	private String type;
 
+	public Company () {
+		
+	}
 	public Company(String name, int code, String phone, String type) {
 		this.name = name;
 		this.code = code;

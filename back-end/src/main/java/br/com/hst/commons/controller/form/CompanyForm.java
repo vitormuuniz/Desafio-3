@@ -1,6 +1,7 @@
-package br.com.hst.desafio3.controller.form;
+package br.com.hst.commons.controller.form;
 
-import br.com.hst.desafio3.domain.Company;
+import br.com.hst.commons.domain.Company;
+import br.com.hst.commons.repository.CompanyRepository;
 
 public class CompanyForm {
 	
@@ -36,5 +37,14 @@ public class CompanyForm {
 	
 	public Company returnCompany() {
 		return new Company(name, code, phone, type);
+	}
+	
+	public Company updateCompanyForm(Long id, CompanyRepository companyRepository) {
+		Company company = companyRepository.getOne(id);
+		company.setName(name);
+		company.setCode(code);
+		company.setPhone(phone);
+		company.setType(type);
+		return company;
 	}
 }
