@@ -75,7 +75,7 @@ public class Controller {
 				UriComponentsBuilder uriBuilder) {
 			Optional<User> userOp = userRepository.findById(id);
 			if (userOp.isPresent()) {
-				User user = form.updateCompanyForm(id, userRepository, companyRepository);
+				User user = form.updateUserForm(id, userRepository, companyRepository);
 				return ResponseEntity.ok(new UserDto(user));
 			}
 			return ResponseEntity.notFound().build();

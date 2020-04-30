@@ -55,13 +55,13 @@ public class UserForm {
 		return new User(name, email, password, company);
 	}
 	
-	public User updateCompanyForm(Long id, UserRepository userRepository, CompanyRepository companyRepository) {
-		companyRepository.save(company);
+	public User updateUserForm(Long id, UserRepository userRepository, CompanyRepository companyRepository) {		
 		User user = userRepository.getOne(id);
 		user.setName(name);
 		user.setEmail(email);
 		user.setPassword(password);
 		user.setCompany(company);
+		companyRepository.save(company);
 		return user;
 	}
 }
