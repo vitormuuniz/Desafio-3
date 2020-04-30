@@ -17,4 +17,4 @@ Application Requeriments:
             
 4 - Keep the service running in the DEV-INTERNSHIP Virtual Machine
 
-#### To access the swagger documentation you need to run the application and access the following link: http://localhost:8080/swagger-ui.html#/
+#### To get access to the swagger documentation you need to run the application and then access the following link: http://localhost:8080/swagger-ui.html#/
