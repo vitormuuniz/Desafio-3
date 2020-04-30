@@ -4,15 +4,15 @@
 	
   	1 - Modelling a relational database (PostgreSQL)
 	
-	2- Create a card to DEV-DATA team to crete a database on our test environment
+	2 - Create a card to DEV-DATA team to crete a database on our test environment
   
 	3 - Modelling the application architeture in micro-services
   
-    Application Requeriments:
-            1 - Have at least 3 pages (index, companies, users)
-            3- Every page must have: header, menu, body(content) and footer
-            3 - Front-end must be done in React
-            4 - Back-end must be done in Spring Boot
-	          5 - Must have search and insertion of companies and users in database
+	    Application Requeriments:
+		    1 - Have at least 3 pages (index, companies, users)
+		    3 - Every page must have: header, menu, body(content) and footer
+		    3 - Front-end must be done in React
+		    4 - Back-end must be done in Spring Boot
+		    5 - Must have search and insertion of companies and users in database
             
-    4 - Keep the service running in the DEV-INTERNSHIP VM
+   	4 - Keep the service running in the DEV-INTERNSHIP Virtual Machine
