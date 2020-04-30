@@ -8,6 +8,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class StandardError implements Serializable {
 	private static final long serialVersionUID = -5146840893761715063L;
 	
+	/** Class for error handling. It have the attributes of a response when happened some error. */
+	
+	/** Constructor to use in ControllerExceptionHandler */	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant timestemp;	
 	private Integer status;
@@ -66,5 +69,4 @@ public class StandardError implements Serializable {
 	public void setPath(String path) {
 		this.path = path;
 	}
-
 }

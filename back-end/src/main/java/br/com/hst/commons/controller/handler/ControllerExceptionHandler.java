@@ -15,6 +15,8 @@ import br.com.hst.commons.exceptions.ResourceNotFountException;
 @ControllerAdvice
 public class ControllerExceptionHandler {
 	
+	/** Class for error handling. It have the attributes of a response when happened some error. */
+	
 	@ExceptionHandler(ResourceNotFountException.class)
 	public ResponseEntity<StandardError> resourceNotFound (ResourceNotFountException e, HttpServletRequest request){
 		String msn = "Resource not found";
@@ -30,5 +32,4 @@ public class ControllerExceptionHandler {
 		StandardError error = new StandardError(Instant.now(), status.value() , msn, e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(error);		
 	}
-
 }
