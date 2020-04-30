@@ -1,4 +1,4 @@
-package br.com.hst.desafio3.controller.form;
+package br.com.hst.desafio3.form;
 
 import com.sun.istack.NotNull;
 
