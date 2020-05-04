@@ -8,13 +8,18 @@
     justify-content: center;
 
 }
-
-
 .newUser-container .content{
-    width: 100%;
+    width: 90%;
     padding: 100px;
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.newUser-container .content section{
+    width: 100%;
+    max-width: 380px;
+    margin: 50px;
 }
