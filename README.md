@@ -1,4 +1,4 @@
-# Desafio 3
+# Desafio 3 - React + Spring
 
 #### Internship Challenge goals:
 
