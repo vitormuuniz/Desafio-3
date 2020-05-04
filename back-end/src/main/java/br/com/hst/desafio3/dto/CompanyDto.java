@@ -10,14 +10,18 @@ public class CompanyDto {
 	private String name;
 	private int code;
 	private String phone;
-	private String type;	
+	private String type_company;	
 	
 	public CompanyDto(Company company) {
 		this.id = company.getId();
 		this.name = company.getName();
 		this.code = company.getCode();
 		this.phone = company.getPhone();
+<<<<<<< HEAD
+		this.type_company = company.getType_company();
+=======
 		this.type = company.getType_company();
+>>>>>>> 00b2a4606cd53298b590f676aeb6fd1c72952b51
 	}
 	
 	public Long getId() {
@@ -46,11 +50,12 @@ public class CompanyDto {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getType() {
-		return type;
+	public String getType_company() {
+		return type_company;
 	}
-	public void setType(String type) {
-		this.type = type;
+	
+	public void setType_company(String type_company) {
+		this.type_company = type_company;
 	}
 	
 	public static Page<CompanyDto> converter(Page<Company> user) {

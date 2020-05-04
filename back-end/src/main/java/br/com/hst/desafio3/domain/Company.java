@@ -31,7 +31,7 @@ public class Company {
 		this.name = name;
 		this.code = code;
 		this.phone = phone;
-		this.setType_company(type);
+		this.type_company = type;
 	}
 
 	public Long getId() {
