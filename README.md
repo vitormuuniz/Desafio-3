@@ -2,11 +2,11 @@
 
 #### Internship Challenge goals:
 
-	1 - Modelling a relational database (PostgreSQL)
+	1 - Model a relational database (PostgreSQL)
 
 	2 - Create a card to DEV-DATA team to create a database on our test environment
 
-	3 - Modelling the application architeture in micro-services
+	3 - Model the application architeture in micro-services
 
 	Application Requeriments:
 	1 - Have at least 3 pages (index, companies, users)
