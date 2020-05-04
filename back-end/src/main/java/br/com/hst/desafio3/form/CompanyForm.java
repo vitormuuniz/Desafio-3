@@ -44,7 +44,7 @@ public class CompanyForm {
 		company.setName(name);
 		company.setCode(code);
 		company.setPhone(phone);
-		company.setType(type);
+		company.setType_company(type);
 		return company;
 	}
 }

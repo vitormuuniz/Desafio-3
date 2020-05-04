@@ -17,7 +17,7 @@ public class CompanyDto {
 		this.name = company.getName();
 		this.code = company.getCode();
 		this.phone = company.getPhone();
-		this.type = company.getType();
+		this.type = company.getType_company();
 	}
 	
 	public Long getId() {

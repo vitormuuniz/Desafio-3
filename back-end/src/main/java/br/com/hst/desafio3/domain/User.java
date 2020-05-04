@@ -10,13 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity(name="user_table")
-public class User implements Serializable {
+public class User {
 
-	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY, generator="seq_user")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seq_user_table")
+	@SequenceGenerator(name = "seq_user_table", sequenceName = "seq_user_table", allocationSize = 1)
 	private Long id;
 	
 	@Column(nullable = false, length = 60)
@@ -26,7 +27,7 @@ public class User implements Serializable {
 	@Column(nullable = false, length = 60)
 	private String password;
 	@OneToOne(cascade=CascadeType.REMOVE)
-	@JoinColumn(name = "company_ID", nullable = false)
+	@JoinColumn(name = "company_id", nullable = false)
 	private Company company;
 	
 	public User() {
@@ -78,9 +79,5 @@ public class User implements Serializable {
 
 	public void setCompany(Company company) {
 		this.company = company;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 }
