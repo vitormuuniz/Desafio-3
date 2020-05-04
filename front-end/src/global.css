@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: 400 14px Roboto;
+}
+
+
+footer{
+    position: absolute;
+    display: inline-block;
+    white-space: nowrap;
+    right: 50px;
+    left: 50px;
+    bottom: 0;
+    height: 40px;
+    padding: 10px;
+    border-top: 2px solid #b3b0b0;
+    background-color: #ffffff;
+}
+footer p{
+    float: right;
+    color: #9e9b9b;
+    font-size: small;
+}
+
+footer img{
+    float: left;
+    height:20px;
+}
