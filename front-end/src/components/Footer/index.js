@@ -1,8 +1,9 @@
 import React from 'react';
-import './global.css';
 
+import '../../global.css';
+import './styles.css';
 
-import logoImg from './assets/logoHST.png';
+import logoImg from '../../assets/logoHST.png';
 
 export default function Footer(){
     return(

@@ -1,19 +1,18 @@
 package br.com.hst.desafio3.domain;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 @Entity(name="company_table")
-public class Company implements Serializable {
+public class Company {
 
-	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY, generator="seq_company")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_company_table")
+	@SequenceGenerator(name = "seq_company_table", sequenceName = "seq_company_table", allocationSize = 1)
 	private Long id;
 	
 	@Column(nullable = false, length = 60)
@@ -66,7 +65,7 @@ public class Company implements Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
+	
 	public String getType_company() {
 		return type_company;
 	}
@@ -74,4 +73,5 @@ public class Company implements Serializable {
 	public void setType_company(String type_company) {
 		this.type_company = type_company;
 	}
+	
 }
