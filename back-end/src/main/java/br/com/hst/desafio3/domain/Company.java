@@ -23,7 +23,7 @@ public class Company implements Serializable {
 	@Column(nullable = false, length = 15)
 	private String phone;
 	@Column(nullable = false, length = 60)
-	private String type;
+	private String type_company;
 
 	public Company () {
 		
@@ -32,7 +32,7 @@ public class Company implements Serializable {
 		this.name = name;
 		this.code = code;
 		this.phone = phone;
-		this.type = type;
+		this.type_company = type;
 	}
 
 	public Long getId() {
@@ -67,15 +67,11 @@ public class Company implements Serializable {
 		this.phone = phone;
 	}
 
-	public String getType() {
-		return type;
+	public String getType_company() {
+		return type_company;
 	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	
+	public void setType_company(String type_company) {
+		this.type_company = type_company;
 	}
 }

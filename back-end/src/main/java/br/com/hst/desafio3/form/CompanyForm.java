@@ -8,7 +8,7 @@ public class CompanyForm {
 	private String name;
 	private int code;
 	private String phone;
-	private String type;
+	private String type_company;
 	
 	public String getName() {
 		return name;
@@ -28,15 +28,15 @@ public class CompanyForm {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getType() {
-		return type;
+	public String getType_company() {
+		return type_company;
 	}
-	public void setType(String type) {
-		this.type = type;
-	}	
+	public void setType_company(String type_company) {
+		this.type_company = type_company;
+	}
 	
 	public Company returnCompany() {
-		return new Company(name, code, phone, type);
+		return new Company(name, code, phone, type_company);
 	}
 	
 	public Company updateCompanyForm(Long id, CompanyRepository companyRepository) {
@@ -44,7 +44,7 @@ public class CompanyForm {
 		company.setName(name);
 		company.setCode(code);
 		company.setPhone(phone);
-		company.setType(type);
+		company.setType_company(type_company);
 		return company;
 	}
 }
