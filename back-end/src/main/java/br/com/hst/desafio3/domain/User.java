@@ -1,7 +1,5 @@
 package br.com.hst.desafio3.domain;
 
-import java.io.Serializable;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
