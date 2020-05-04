@@ -1,0 +1,22 @@
+footer{
+    position: absolute;
+    display: inline-block;
+    white-space: nowrap;
+    right: 50px;
+    left: 50px;
+    bottom: 0;
+    height: 40px;
+    padding: 10px;
+    border-top: 2px solid #b3b0b0;
+    background-color: #ffffff;
+}
+footer p{
+    float: right;
+    color: #9e9b9b;
+    font-size: small;
+}
+
+footer img{
+    float: left;
+    height:20px;
+}
