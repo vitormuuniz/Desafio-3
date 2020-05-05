@@ -7,7 +7,7 @@ import br.com.hst.desafio3.domain.User;
 import br.com.hst.desafio3.repository.CompanyRepository;
 import br.com.hst.desafio3.repository.UserRepository;
 
-public class UserUpdateForm {
+public class UpdateUserForm {
 	
 	@NotNull 
 	private String name;

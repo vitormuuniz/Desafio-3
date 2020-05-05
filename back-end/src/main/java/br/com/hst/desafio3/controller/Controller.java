@@ -28,9 +28,9 @@ import br.com.hst.desafio3.domain.User;
 import br.com.hst.desafio3.dto.CompanyDto;
 import br.com.hst.desafio3.dto.UserDto;
 import br.com.hst.desafio3.form.CompanyForm;
-import br.com.hst.desafio3.form.CompanyUpdateForm;
+import br.com.hst.desafio3.form.UpdateCompanyForm;
 import br.com.hst.desafio3.form.UserForm;
-import br.com.hst.desafio3.form.UserUpdateForm;
+import br.com.hst.desafio3.form.UpdateUserForm;
 import br.com.hst.desafio3.repository.CompanyRepository;
 import br.com.hst.desafio3.repository.UserRepository;
 
@@ -73,7 +73,7 @@ public class Controller {
 		
 		@PutMapping("/users/{id}")
 		@Transactional
-		public ResponseEntity<UserDto> updateUser(@PathVariable Long id, @RequestBody @Valid UserUpdateForm form,
+		public ResponseEntity<UserDto> updateUser(@PathVariable Long id, @RequestBody @Valid UpdateUserForm form,
 				UriComponentsBuilder uriBuilder) {
 			Optional<User> userOp = userRepository.findById(id);
 			if (userOp.isPresent()) {
@@ -123,7 +123,7 @@ public class Controller {
 		
 		@PutMapping("/companies/{id}")
 		@Transactional
-		public ResponseEntity<CompanyDto> updateCompany(@PathVariable Long id, @RequestBody @Valid CompanyUpdateForm form,
+		public ResponseEntity<CompanyDto> updateCompany(@PathVariable Long id, @RequestBody @Valid UpdateCompanyForm form,
 				UriComponentsBuilder uriBuilder) {
 			Optional<Company> companyOp = companyRepository.findById(id);
 			if (companyOp.isPresent()) {

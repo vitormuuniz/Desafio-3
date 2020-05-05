@@ -3,7 +3,7 @@ package br.com.hst.desafio3.form;
 import br.com.hst.desafio3.domain.Company;
 import br.com.hst.desafio3.repository.CompanyRepository;
 
-public class CompanyUpdateForm {
+public class UpdateCompanyForm {
 	
 	private String name;
 	private Integer code;
