@@ -1,0 +1,25 @@
+.newUser-container{
+    width: 100%;
+    max-width: 1120px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.newUser-container .content{
+    width: 90%;
+    padding: 100px;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.newUser-container .content section{
+    width: 100%;
+    max-width: 380px;
+    margin: 50px;
+}
