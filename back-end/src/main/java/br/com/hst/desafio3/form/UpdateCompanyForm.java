@@ -41,26 +41,22 @@ public class UpdateCompanyForm {
 	
 	public Company updateCompanyForm(Long id, CompanyRepository companyRepository) {
 		Company company = companyRepository.getOne(id);
-		verifyNull(name, code, phone, type_company, company);
-		company.setName(name);
-		company.setCode(code);
-		company.setPhone(phone);
-		company.setType_company(type_company);
+		verifyIfParamIsNotNull(company);
 		return company;
 	}
 	
-	private void verifyNull(String name, Integer code, String phone, String type_company, Company company) {
-		if(name == null || name.isEmpty()) {
-			this.setName(company.getName());
-		}
-		if(code == null ) {
-			this.setCode(company.getCode());
-		}
-		if(phone == null || phone.isEmpty()) {
-			this.setPhone(company.getPhone());
-		}
-		if(type_company == null || type_company.isEmpty()) {
-			this.setType_company(company.getType_company());
-		}		
+	private void verifyIfParamIsNotNull(Company company) {
+		
+		if (name != null)
+			company.setName(name);
+
+		if (code != null)
+			company.setCode(code);
+
+		if (phone != null)
+			company.setPhone(phone);
+
+		if (type_company != null)
+			company.setType_company(type_company);
 	}
 }
