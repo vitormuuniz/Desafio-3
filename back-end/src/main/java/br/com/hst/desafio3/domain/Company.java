@@ -31,7 +31,7 @@ public class Company {
 		this.name = name;
 		this.code = code;
 		this.phone = phone;
-		this.setType_company(type);
+		this.type_company = type;
 	}
 
 	public Long getId() {
@@ -72,6 +72,5 @@ public class Company {
 	
 	public void setType_company(String type_company) {
 		this.type_company = type_company;
-	}
-	
+	}	
 }
