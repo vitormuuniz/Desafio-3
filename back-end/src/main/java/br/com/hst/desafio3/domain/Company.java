@@ -72,6 +72,5 @@ public class Company {
 	
 	public void setType_company(String type_company) {
 		this.type_company = type_company;
-	}
-	
+	}	
 }
