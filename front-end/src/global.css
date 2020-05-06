@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    outline:0;
+    outline: 0;
     font: 400 14px Roboto;
 }
 
-form input{
+form input {
     width: 100%;
     height: 30px;
     resize: vertical;
-    background-color: #f7f7f7 ;
+    background-color: #f7f7f7;
     border: 1px solid #dcdce6;
     margin-bottom: 10px;
     padding: 10px;
@@ -20,13 +20,13 @@ form input{
     border: 0;
 }
 
-select{
-    -webkit-appearance: none;  /* Remove estilo padrão do Chrome */
+select {
+    -webkit-appearance: none; /* Remove estilo padrão do Chrome */
     -moz-appearance: none; /* Remove estilo padrão do FireFox */
     appearance: none; /* Remove estilo padrão do FireFox*/
     width: 100%;
     height: 30px;
-    background-color: #f7f7f7 ;
+    background-color: #f7f7f7;
     resize: vertical;
     margin-bottom: 10px;
     padding: 0 15px;
@@ -34,8 +34,8 @@ select{
 }
 
 
-.button{
-    width: 100%;
+.button {
+
     height: 40px;
     background: #f49712;
     border: 0;
@@ -49,8 +49,49 @@ select{
     font-size: 18px;
     line-height: 30px;
     transition: 0.2;
+
+    position: relative;
+    width: 50%;
+    left: 25%;
 }
 
-.button:hover, select:hover, input:hover{
+.button:hover, select:hover, input:hover {
     filter: brightness(90%);
+}
+
+.top-newRegister {
+    display: flex;
+}
+
+.newRegister-container {
+    width: 100%;
+    max-width: 1120px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.newRegister-container .pageHeader {
+    position: fixed;
+    top: 80px;
+}
+
+.newRegister-container .content {
+    width: 100%;
+    padding: 100px;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+    height: 70vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.newRegister-container .content form {
+    width: 100%;
+    height: 100%;
+    max-width: 380px;
+    margin: 50px;
 }

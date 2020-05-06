@@ -5,15 +5,16 @@ import './styles.css';
 import hstLogo from '../../assets/logoHST.png';
 
 import {MdVisibility} from "react-icons/md" 
+
 export default function NewUser(){
     return(
-        <div className="newUser-container">
+        <div className="newRegister-container">
             <div className="content">
                 <img src={hstLogo} alt="HST Card Technology" />
                 
                 <section className="form">
                         <form action="">
-                            <strong>Informações básicas</strong>
+                            <strong>Informações Básicas</strong>
                             <div className="basicInfo">
                                 <input type="text" id="userName" placeholder="Usuário"/>
                                 <select name="companyName-select" id="companyName-select">
