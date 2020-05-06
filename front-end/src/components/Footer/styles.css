@@ -1,22 +1,24 @@
-div.footer{
+.footer{
     position: relative;
-    width: 100%;
     display: inline-block;
+    width: 80%;
     white-space: nowrap;
-    bottom: 0%;
+    bottom: 0;
     height: 40px;
     padding: 10px;
+    left: 10%;
+    right: 10%;
     margin: 0 auto;
     border-top: 2px solid #b3b0b0;
     background-color: #ffffff;
 }
-div.footer p{
+.footer p{
     float: right;
     color: #9e9b9b;
     font-size: smaller;
 }
 
-div.footer img{
+.footer img{
     float: left;
     height:20px;
 }
