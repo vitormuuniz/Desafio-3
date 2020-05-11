@@ -2,28 +2,30 @@ import React from 'react';
 
 import Paper from '@material-ui/core/Paper';
 import {
-    fade,
-    ThemeProvider,
-    withStyles,
     makeStyles,
-    createMuiTheme,
 } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-
-import './styles.css';
-
 import hstLogo from '../../assets/logoHST.png';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
-import { MdVisibility } from "react-icons/md"
-import { Typography, Grid } from '@material-ui/core';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import { Grid, Typography } from '@material-ui/core';
+
+import Button from '@material-ui/core/Button';
+
 import clsx from 'clsx';
 import IconButton from '@material-ui/core/IconButton';
+
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import EmailIcon from '@material-ui/icons/Email';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+
+import './styles.css';
+
+
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -67,17 +69,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const companies = [
-    {
-        label: 'Empresa 1',
-    },
-    {
-        label: 'Empresa 2',
-    },
-    {
-        label: 'Empresa 3',
-    }
-]
 
 
 export default function NewUser() {
@@ -85,9 +76,11 @@ export default function NewUser() {
     const [values, setValues] = React.useState({
         amount: '',
         password: '',
+        confirmPassword: '',
         weight: '',
         weightRange: '',
         showPassword: false,
+        showConfirmPassword: false,
     });
 
     const handleChange = (prop) => (event) => {
@@ -97,93 +90,114 @@ export default function NewUser() {
     const handleClickShowPassword = () => {
         setValues({ ...values, showPassword: !values.showPassword });
     };
+    const handleClickShowConfirmPassword = () => {
+        setValues({ ...values, showConfirmPassword: !values.showConfirmPassword });
+    };
 
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
     return (
 
         <div className="newRegister-container">
             <Paper className={classes.paper} elevation={4}>
-                <Grid container className={classes.grid}>
-                    <Grid item className={classes.gridItem} xs>
-                        <img src={hstLogo} alt="HST - Card Technology" />
-                    </Grid>
+                <Grid container direction="column">
+                    <Grid container className={classes.grid}>
+                        <Grid item className={classes.gridItem} xs>
+                            <img src={hstLogo} alt="HST - Card Technology" />
+                        </Grid>
 
-                    <Grid item className={classes.gridItem} xs >
+                        <Grid item className={classes.gridItem} xs >
 
-                        <form action="" className={classes.root} noValidate autoComplete="off">
-                            <TextField
-                                className={classes.margin}
-                                id="input-with-icon-textfield"
-                                label="Usuário"
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <AccountCircle />
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            />
-
-                            <TextField
-                                className={classes.margin}
-                                id="standard-select-currency"
-                                select
-                                label="Empresa"
-                                value={companies}
-                                helperText="Selecione sua empresa"
-                            >
-                            </TextField>
-
-                            <FormControl className={clsx(classes.margin, classes.textField)}>
-                                <InputLabel htmlFor="standard-adornment-password">Senha</InputLabel>
-                                <Input
-                                    id="standard-adornment-password"
-                                    type={values.showPassword ? 'text' : 'password'}
-                                    value={values.password}
-                                    onChange={handleChange('password')}
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                            >
-                                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
+                            <form action="" className={classes.root} noValidate autoComplete="off">
+                                <TextField
+                                    className={classes.margin}
+                                    id="userName"
+                                    label="Usuário"
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment position="start">
+                                                <AccountCircle color="primary" />
+                                            </InputAdornment>
+                                        ),
+                                    }}
                                 />
-                            </FormControl>
 
 
-                            <FormControl className={clsx(classes.margin, classes.textField)}>
-                                <InputLabel htmlFor="standard-adornment-password">Confirmar Senha</InputLabel>
-                                <Input
-                                    id="standard-adornment-password"
-                                    type={values.showPassword ? 'text' : 'password'}
-                                    value={values.password}
-                                    onChange={handleChange('password')}
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                            >
-                                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
+                                <TextField
+                                    className={classes.margin}
+                                    id="userEmail"
+                                    label="Email"
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment position="start">
+                                                <EmailIcon color="primary" />
+                                            </InputAdornment>
+                                        ),
+                                    }}
                                 />
-                            </FormControl>
+
+                                <TextField
+                                    className={classes.margin}
+                                    id="standard-select-currency"
+                                    select
+                                    label="Empresa"
+                                    helperText="Selecione sua empresa"
+                                >
+                                </TextField>
+
+                                <FormControl className={clsx(classes.margin, classes.textField)}>
+                                    <InputLabel htmlFor="passwordInput">Senha</InputLabel>
+                                    <Input
+                                        id="passwordInput"
+                                        type={values.showPassword ? 'text' : 'password'}
+                                        value={values.password}
+                                        onChange={handleChange('password')}
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    onClick={handleClickShowPassword}
+                                                    onMouseDown={handleMouseDownPassword}
+                                                    color="primary"
+                                                >
+                                                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        }
+                                    />
+                                </FormControl>
 
 
+                                <FormControl className={clsx(classes.margin, classes.textField)}>
+                                    <InputLabel htmlFor="confirmPasswordInput">Confirmar Senha</InputLabel>
+                                    <Input
+                                        id="confirmPasswordInput"
+                                        type={values.showConfirmPassword ? 'text' : 'password'}
+                                        value={values.confirmPassword}
+                                        onChange={handleChange('confirmPassword')}
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    onClick={handleClickShowConfirmPassword}
+                                                    onMouseDown={handleMouseDownPassword}
+                                                    color="primary"
+                                                >
+                                                    {values.showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        }
+                                    />
+                                </FormControl>
+                                        <Button variant="contained" size ="medium" color="primary" className={classes.margin}>
+                                            Cadastrar
+                                        </Button>
+                            </form>
 
-                        </form>
 
-
+                        </Grid>
                     </Grid>
                 </Grid>
             </Paper>
