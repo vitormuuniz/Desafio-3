@@ -9,6 +9,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "express": "^4.17.1",
+    "material-ui-popup-state": "^1.5.4",
     "mdbreact": "^4.26.0",
     "react": "^16.13.1",
     "react-bootstrap-dropdown-menu": "^1.1.15",
