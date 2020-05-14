@@ -1,5 +1,7 @@
 package br.com.hst.desafio3.form;
 
+import java.util.Optional;
+
 import com.sun.istack.NotNull;
 
 import br.com.hst.desafio3.domain.Company;
@@ -50,8 +52,8 @@ public class UserForm {
 	}
 	
 	public User returnCustomer(CompanyRepository companyRepository) {
-		Company company = companyRepository.getOne(company_id);
-		System.out.println(company.getName());
-		return new User(name, email, password, company);
-	}
+        Optional<Company> companyOp = companyRepository.findById(company_id);
+
+        return new User(name, email, password, companyOp.get());
+    }
 }
