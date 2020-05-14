@@ -37,7 +37,7 @@ public class ControllerExceptionHandler {
 	
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ResponseEntity<StandardError> invalidValue (DataIntegrityViolationException e, HttpServletRequest request){
-		String msn = "Invalid Value. Verify your size.";
+		String msn = "Data Integrity Violation Exception: Invalid Value. Verify your data.";
 		HttpStatus status = HttpStatus.NOT_FOUND;
 		StandardError error = new StandardError(Instant.now(), status.value() , msn, e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(error);		
@@ -45,7 +45,15 @@ public class ControllerExceptionHandler {
 	
 	@ExceptionHandler(JsonMappingException.class)
 	public ResponseEntity<StandardError> invalidValue (JsonMappingException e, HttpServletRequest request){
-		String msn = "Invalid Value. Verify your type.";
+		String msn = "Json Mapping Exception: Invalid Value. Verify your type.";
+		HttpStatus status = HttpStatus.NOT_FOUND;
+		StandardError error = new StandardError(Instant.now(), status.value() , msn, e.getMessage(), request.getRequestURI());
+		return ResponseEntity.status(status).body(error);		
+	}
+	
+	@ExceptionHandler(IllegalArgumentException.class)
+	public ResponseEntity<StandardError> invalidValue (IllegalArgumentException e, HttpServletRequest request){
+		String msn = "Illegal Argument Exception: The attribute's name incorrect";
 		HttpStatus status = HttpStatus.NOT_FOUND;
 		StandardError error = new StandardError(Instant.now(), status.value() , msn, e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(error);		
