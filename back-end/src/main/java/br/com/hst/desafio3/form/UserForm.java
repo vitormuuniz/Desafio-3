@@ -5,7 +5,6 @@ import com.sun.istack.NotNull;
 import br.com.hst.desafio3.domain.Company;
 import br.com.hst.desafio3.domain.User;
 import br.com.hst.desafio3.repository.CompanyRepository;
-import br.com.hst.desafio3.repository.UserRepository;
 
 public class UserForm {
 	
@@ -16,7 +15,7 @@ public class UserForm {
 	@NotNull 
 	private String password;
 	@NotNull 
-	private Company company;
+	private Long company_id;
 	
 	public String getName() {
 		return name;
@@ -42,26 +41,17 @@ public class UserForm {
 		this.password = password;
 	}
 	
-	public Company getCompany() {
-		return company;
+	public Long getCompany_id() {
+		return company_id;
 	}
-	
-	public void setCompany(Company company) {
-		this.company = company;
+
+	public void setCompany_id(Long company_id) {
+		this.company_id = company_id;
 	}
 	
 	public User returnCustomer(CompanyRepository companyRepository) {
-		companyRepository.save(company);
+		Company company = companyRepository.getOne(company_id);
+		System.out.println(company.getName());
 		return new User(name, email, password, company);
-	}
-	
-	public User updateUserForm(Long id, UserRepository userRepository, CompanyRepository companyRepository) {		
-		User user = userRepository.getOne(id);
-		user.setName(name);
-		user.setEmail(email);
-		user.setPassword(password);
-		user.setCompany(company);
-		companyRepository.save(company);
-		return user;
 	}
 }
