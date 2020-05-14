@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Paper from '@material-ui/core/Paper';
 import {
@@ -16,8 +17,6 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 
-
-
 import '../../global.css';
 import "./styles.css";
 
@@ -29,20 +28,25 @@ const useStyles = makeStyles((theme) => ({
 
     root: {
         '& > *': {
-
             width: '100%',
         },
     },
     paper: {
         width: "100%",
-        height: "100%",
-        height: "51px",
+        height: "60px",
         display: "flex",
         alignItems: 'center',
     },
+
+    dashcontainer:{
+        alignItems: 'center',
+    },
+
     dashIcon: {
         fontSize: "30px",
         marginLeft: "58px",
+        color: "#454444",
+        
     },
 
 
@@ -50,16 +54,19 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         marginLeft: "5px",
         padding: "15px",
+        marginBottom: "3px",
     },
 
     a: {
-        fontSize: "12px",
         marginLeft: "3px",
-        fontStyle: "bold",
-        font: "Roboto",
-    }
+        font: "300 14px Roboto",
+        color: "#454444",
+    },
 
-
+    menuitem: {
+        font: "300 16px Roboto", 
+        color: "#454444",
+    },
 }))
 
 
@@ -99,18 +106,14 @@ export default function SubHeader(){
     prevOpen.current = open;
   }, [open]);
 
-
-
-
+  
     return(
-       <div > 
+       <div className={classes.root}> 
         <Paper className={classes.paper} elevation={4}>
-       
-            <DashboardIcon className={classes.dashIcon} >
-
-            </DashboardIcon>
-
-            <div className={classes.container}>
+        <div className={classes.dashcontainer}>
+            <DashboardIcon className={classes.dashIcon} />
+        </div>
+        <div className={classes.container}>
         <Button
           className={classes.button}
           ref={anchorRef}
@@ -119,7 +122,7 @@ export default function SubHeader(){
           onClick={handleToggle}
         >
             <SettingsIcon color="gray"/>
-            <a className={classes.a}>Toggle Menu Grow</a>
+            <a className={classes.a} id="config">Configurações</a>
             <ArrowDropDownIcon marginLeft="3px"/>
         </Button>
         <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
@@ -131,10 +134,23 @@ export default function SubHeader(){
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                    <MenuItem onClick={handleClose}>Empresas</MenuItem>
-                    <MenuItem onClick={handleClose}>Usuários</MenuItem>
-                    <MenuItem onClick={handleClose}>Teste1</MenuItem>
-                    <MenuItem onClick={handleClose}>Teste2</MenuItem>
+
+                    <MenuItem onClick={handleClose} component={Link} to="/newuser">
+                      <a className={classes.menuitem}>Novo Usuário</a>
+                    </MenuItem>
+
+                    <MenuItem onClick={handleClose} component={Link} to="/newcompany">
+                      <a className={classes.menuitem}>Nova Empresa</a>
+                    </MenuItem>
+
+                    <MenuItem onClick={handleClose} component={Link} to="/newcompany">
+                    <a className={classes.menuitem}>Teste 2</a>
+                    </MenuItem>
+
+                    <MenuItem onClick={handleClose} component={Link} to="/newcompany">
+                      <a className={classes.menuitem}>Teste 2</a>
+                    </MenuItem>
+
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
