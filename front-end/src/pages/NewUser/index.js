@@ -17,6 +17,8 @@ import EmailIcon from '@material-ui/icons/Email';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
+import api from '../../services/api';
+
 import hstLogo from '../../assets/logoHST.png';
 import './styles.css';
 
@@ -66,9 +68,9 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function NewUser() {
-    const [userName, setUserName] = useState('');
-    const [userEmail, setUserEmail] = useState('');
-    const [company, setCompany] = useState('');
+    const [name, setname] = useState('');
+    const [email, setemail] = useState('');
+    const [company_id, setCompany_id] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -87,16 +89,29 @@ export default function NewUser() {
         event.preventDefault();
     };
      
-    function handleNewUser(e){
+    async function handleNewUser(e){
        e.preventDefault();
 
+       console.log({
+        company_id,
+        email,
+        name,
+        password,
+    })
+
        const data = ({
-           userName,
-           userEmail,
-           company,
+           company_id,
+           email,
+           name,
            password,
-           confirmPassword
        })
+       try {
+        const response = await api.post('users', data);
+        alert(`Usuário cadastrado com sucesso ${response.data}`);
+       } catch (err) {
+           alert(`Erro ao cadastrar usuário` );
+       }
+
     }
 
     return (
@@ -114,10 +129,10 @@ export default function NewUser() {
                             <form onSubmit={handleNewUser} className={classes.root} noValidate autoComplete="off">
                                 <TextField
                                     className={classes.margin}
-                                    id="userName"
+                                    id="name"
                                     required
-                                    value={userName}
-                                    onChange={e => setUserName(e.target.value)}
+                                    value={name}
+                                    onChange={e => setname(e.target.value)}
                                     label="Usuário"
                                     InputProps={{
                                         startAdornment: (
@@ -131,11 +146,11 @@ export default function NewUser() {
 
                                 <TextField
                                     className={classes.margin}
-                                    id="userEmail"
+                                    id="email"
                                     type="email"
                                     required
-                                    value={userEmail}
-                                    onChange={e => setUserEmail(e.target.value)}
+                                    value={email}
+                                    onChange={e => setemail(e.target.value)}
                                     label="Email"
                                     InputProps={{
                                         startAdornment: (
@@ -150,15 +165,15 @@ export default function NewUser() {
                                     className={classes.margin}
                                     id="standard-select-currency"
                                     required
-                                    value={company}
-                                    onChange={e => setCompany(e.target.value)}
+                                    value={company_id}
+                                    onChange={e => setCompany_id(e.target.value)}
                                     select
                                     label="Empresa"
                                     helperText="Selecione sua empresa"
                                 >
-                                    <MenuItem value={'Empresa do seu Zé'}>Emresa do seu Zé</MenuItem>
-                                    <MenuItem value={'Empresa do seu Zé'}>Emresa do seu João</MenuItem>
-                                    <MenuItem value={'Empresa do seu Zé'}>Emresa do seu Manoel</MenuItem>
+                                    <MenuItem value={39}>Emresa do seu Zé</MenuItem>
+                                    <MenuItem value={39}>Emresa do seu João</MenuItem>
+                                    <MenuItem value={39}>Emresa do seu Manoel</MenuItem>
                                 </TextField>
 
                                 <FormControl className={clsx(classes.margin, classes.textField)}>
