@@ -1,0 +1,7 @@
+.newRegister-container .content form .input-group {
+    display: flex;
+}
+
+.newRegister-container .content form #codigo {
+    margin-left: 10px;
+}

@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +35,7 @@ import br.com.hst.desafio3.form.UserUpdateForm;
 import br.com.hst.desafio3.repository.CompanyRepository;
 import br.com.hst.desafio3.repository.UserRepository;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class Controller {
 
@@ -42,6 +44,7 @@ public class Controller {
 	
 	@Autowired
 	CompanyRepository companyRepository;
+	
 	
 	@PostMapping("/users") 
 	public ResponseEntity<UserDto> registerCustomer(@RequestBody @Valid UserForm form, UriComponentsBuilder uriBuilder) {
