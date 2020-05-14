@@ -1,9 +1,215 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {makeStyles} from '@material-ui/core/styles';
 
+import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import { Grid, Typography, MenuItem } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import clsx from 'clsx';
+import IconButton from '@material-ui/core/IconButton';
+
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import EmailIcon from '@material-ui/icons/Email';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+
+import hstLogo from '../../assets/logoHST.png';
 import './styles.css';
 
-export default function NewUser(){
-    return(
-        <h1>Novo Usuário</h1>
+
+
+const useStyles = makeStyles((theme) => ({
+    margin: {
+        margin: theme.spacing(1),
+    },
+
+    root: {
+        '& > *': {
+            width: '80%',
+        },
+    },
+    paper: {
+        width: "80%",
+        height: "70%",
+        display: "flex",
+        alignItems: 'center',
+    },
+
+
+    grid: {
+        direction: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
+
+    },
+
+    gridItem: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        border: "20",
+        height: "80%",
+        width: "15%",
+        padding: "4",
+
+    },
+    hstImg: {
+        height: "15%",
+    },
+}))
+
+
+
+export default function NewUser() {
+    const [userName, setUserName] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [company, setCompany] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+
+
+    const classes = useStyles();
+    const [values, setValues] = useState({
+        showPassword: false
+    });
+
+    const handleClickShowPassword = () => {
+        setValues({ ...values, showPassword: !values.showPassword });
+    };
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
+     
+    function handleNewUser(e){
+       e.preventDefault();
+
+       const data = ({
+           userName,
+           userEmail,
+           company,
+           password,
+           confirmPassword
+       })
+    }
+
+    return (
+
+        <div className="newRegister-container">
+            <Paper className={classes.paper} elevation={4}>
+                <Grid container direction="column">
+                    <Grid container className={classes.grid}>
+                        <Grid item className={classes.gridItem} xs>
+                            <img src={hstLogo} alt="HST - Card Technology" />
+                        </Grid>
+
+                        <Grid item className={classes.gridItem} xs >
+
+                            <form onSubmit={handleNewUser} className={classes.root} noValidate autoComplete="off">
+                                <TextField
+                                    className={classes.margin}
+                                    id="userName"
+                                    required
+                                    value={userName}
+                                    onChange={e => setUserName(e.target.value)}
+                                    label="Usuário"
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment position="start">
+                                                <AccountCircle color="primary" />
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                />
+
+
+                                <TextField
+                                    className={classes.margin}
+                                    id="userEmail"
+                                    type="email"
+                                    required
+                                    value={userEmail}
+                                    onChange={e => setUserEmail(e.target.value)}
+                                    label="Email"
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment position="start">
+                                                <EmailIcon color="primary" />
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                />
+
+                                <TextField
+                                    className={classes.margin}
+                                    id="standard-select-currency"
+                                    required
+                                    value={company}
+                                    onChange={e => setCompany(e.target.value)}
+                                    select
+                                    label="Empresa"
+                                    helperText="Selecione sua empresa"
+                                >
+                                    <MenuItem value={'Empresa do seu Zé'}>Emresa do seu Zé</MenuItem>
+                                    <MenuItem value={'Empresa do seu Zé'}>Emresa do seu João</MenuItem>
+                                    <MenuItem value={'Empresa do seu Zé'}>Emresa do seu Manoel</MenuItem>
+                                </TextField>
+
+                                <FormControl className={clsx(classes.margin, classes.textField)}>
+                                    <InputLabel htmlFor="passwordInput">Senha</InputLabel>
+                                    <Input
+                                        id="passwordInput"
+                                        type={values.showPassword ? 'text' : 'password'}
+                                        required
+                                        value={password}
+                                        onChange={e => setPassword(e.target.value)}
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    onClick={handleClickShowPassword}
+                                                    onMouseDown={handleMouseDownPassword}
+                                                    color="primary"
+                                                >
+                                                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        }
+                                    />
+                                </FormControl>
+
+
+                                <FormControl className={clsx(classes.margin, classes.textField)}>
+                                    
+                                    <TextField
+                                        id="standard-basic"
+                                        label="Confirmar Senha"
+                                        required
+                                        type={values.showConfirmPassword ? 'text' : 'password'}
+                                        value={confirmPassword}
+                                        onChange={e => setConfirmPassword(e.target.value)}
+                                        error={confirmPassword !== password}
+                                        helperText={confirmPassword !== password ? 'Senhas não correspondentes' : ' '}
+                                    />
+                                </FormControl>
+                                <Button variant="contained" size="medium" color="primary" type="submit" className={classes.margin}>
+                                    <Typography>Cadastrar</Typography>
+                                </Button>
+                            </form>
+
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Paper>
+        </div >
+
+
     );
 }

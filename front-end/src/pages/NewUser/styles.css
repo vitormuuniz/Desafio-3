@@ -1,0 +1,30 @@
+.basicInfo-content, .password-content{
+    border-top: 2px solid #9e9c9c;
+    margin-bottom: 20px;
+    padding: 8px;
+}
+
+
+#password, #confirmPassword {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    background-color: #f7f7f7;
+    border: 0;
+    margin-bottom: 10px;
+}
+
+#password:hover, #confirmPassword:hover{
+    filter: brightness(90%);
+}
+
+#newPasswordInput, #confirmPasswordInput{
+    margin-bottom: 0;
+}
+
+.visibilityIcon {
+    margin: 0 10px;
+    height: 15px;
+    color: #858181;
+}
+
