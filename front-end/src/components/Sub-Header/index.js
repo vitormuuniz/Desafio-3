@@ -31,11 +31,15 @@ const useStyles = makeStyles((theme) => ({
             width: '100%',
         },
     },
+
     paper: {
         width: "100%",
         height: "60px",
         display: "flex",
         alignItems: 'center',
+        zIndex: "99",
+        position: "relative",
+        
     },
 
     dashcontainer:{
@@ -45,8 +49,7 @@ const useStyles = makeStyles((theme) => ({
     dashIcon: {
         fontSize: "30px",
         marginLeft: "58px",
-        color: "#454444",
-        
+        color: "#454444",  
     },
 
 
@@ -109,7 +112,7 @@ export default function SubHeader(){
   
     return(
        <div className={classes.root}> 
-        <Paper className={classes.paper} elevation={4}>
+        <Paper className={classes.paper} elevation={4} >
         <div className={classes.dashcontainer}>
             <DashboardIcon className={classes.dashIcon} />
         </div>
@@ -131,7 +134,7 @@ export default function SubHeader(){
               {...TransitionProps}
               style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
             >
-              <Paper>
+              <Paper className={classes.paperTransform}>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
 

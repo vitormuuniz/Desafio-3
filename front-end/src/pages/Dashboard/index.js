@@ -46,12 +46,10 @@ export default function Dashboard(){
     
     const classes = useStyles();
 
-   
-
     return (
 
     <div> 
-        <div className="box">    
+        <div className="box">  
             <a className="box-welcome">
                 Bem vindo!
             </a>    
