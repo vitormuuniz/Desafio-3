@@ -1,20 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 
-import Paper from '@material-ui/core/Paper';
-import {
-    makeStyles,
-} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import hstLogo from '../../assets/logoHST.png';
-
+import Paper from '@material-ui/core/Paper';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
-import { Grid, Typography } from '@material-ui/core';
-
+import { Grid, Typography, MenuItem } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-
 import clsx from 'clsx';
 import IconButton from '@material-ui/core/IconButton';
 
@@ -23,6 +17,9 @@ import EmailIcon from '@material-ui/icons/Email';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
+import api from '../../services/api';
+
+import hstLogo from '../../assets/logoHST.png';
 import './styles.css';
 
 
@@ -34,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
 
     root: {
         '& > *': {
-
             width: '80%',
         },
     },
@@ -65,38 +61,67 @@ const useStyles = makeStyles((theme) => ({
 
     },
     hstImg: {
-        height: "5",
+        height: "15%",
     },
 }))
 
 
 
 export default function NewUser() {
-    const classes = useStyles();
-    const [values, setValues] = React.useState({
-        amount: '',
-        password: '',
-        confirmPassword: '',
-        weight: '',
-        weightRange: '',
-        showPassword: false,
-        showConfirmPassword: false,
-    });
+    const [name, setname] = useState('');
+    const [email, setemail] = useState('');
+    const [company_id, setCompany_id] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
-    const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-    };
+    const [companies, setCompanies] = useState([]);
+    useEffect(() => {
+        api.get('companies').then(response => { setCompanies(response.data["content"]) })
+    }, []);
+
+
+    const classes = useStyles();
+    const [values, setValues] = useState({
+        showPassword: false
+    });
 
     const handleClickShowPassword = () => {
         setValues({ ...values, showPassword: !values.showPassword });
-    };
-    const handleClickShowConfirmPassword = () => {
-        setValues({ ...values, showConfirmPassword: !values.showConfirmPassword });
     };
 
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+    async function handleNewUser(e) {
+        e.preventDefault();
+
+        console.log({
+            company_id,
+            email,
+            name,
+            password,
+        })
+
+        const data = ({
+            company_id,
+            email,
+            name,
+            password,
+        })
+        try {
+            if (password === confirmPassword) {
+                const response = await api.post('users', data);
+                alert(`Usuário cadastrado com sucesso`);
+            }
+            else{
+                alert('Senhas não correspondentes!');
+            }
+        } catch (err) {
+            alert(`Erro ao cadastrar usuário`);
+        }
+
+    }
 
     return (
 
@@ -110,10 +135,13 @@ export default function NewUser() {
 
                         <Grid item className={classes.gridItem} xs >
 
-                            <form action="" className={classes.root} noValidate autoComplete="off">
+                            <form onSubmit={handleNewUser} className={classes.root} noValidate autoComplete="off">
                                 <TextField
                                     className={classes.margin}
-                                    id="userName"
+                                    id="name"
+                                    required
+                                    value={name}
+                                    onChange={e => setname(e.target.value)}
                                     label="Usuário"
                                     InputProps={{
                                         startAdornment: (
@@ -127,7 +155,11 @@ export default function NewUser() {
 
                                 <TextField
                                     className={classes.margin}
-                                    id="userEmail"
+                                    id="email"
+                                    type="email"
+                                    required
+                                    value={email}
+                                    onChange={e => setemail(e.target.value)}
                                     label="Email"
                                     InputProps={{
                                         startAdornment: (
@@ -141,10 +173,16 @@ export default function NewUser() {
                                 <TextField
                                     className={classes.margin}
                                     id="standard-select-currency"
+                                    required
+                                    value={company_id}
+                                    onChange={e => setCompany_id(e.target.value)}
                                     select
                                     label="Empresa"
                                     helperText="Selecione sua empresa"
                                 >
+                                    {companies.map(company => (<MenuItem value={company.id}>{company.name}</MenuItem>))}
+
+
                                 </TextField>
 
                                 <FormControl className={clsx(classes.margin, classes.textField)}>
@@ -152,8 +190,9 @@ export default function NewUser() {
                                     <Input
                                         id="passwordInput"
                                         type={values.showPassword ? 'text' : 'password'}
-                                        value={values.password}
-                                        onChange={handleChange('password')}
+                                        required
+                                        value={password}
+                                        onChange={e => setPassword(e.target.value)}
                                         endAdornment={
                                             <InputAdornment position="end">
                                                 <IconButton
@@ -171,29 +210,21 @@ export default function NewUser() {
 
 
                                 <FormControl className={clsx(classes.margin, classes.textField)}>
-                                    <InputLabel htmlFor="confirmPasswordInput">Confirmar Senha</InputLabel>
-                                    <Input
-                                        id="confirmPasswordInput"
+
+                                    <TextField
+                                        id="standard-basic"
+                                        label="Confirmar Senha"
+                                        required
                                         type={values.showConfirmPassword ? 'text' : 'password'}
-                                        value={values.confirmPassword}
-                                        onChange={handleChange('confirmPassword')}
-                                        endAdornment={
-                                            <InputAdornment position="end">
-                                                <IconButton
-                                                    aria-label="toggle password visibility"
-                                                    onClick={handleClickShowConfirmPassword}
-                                                    onMouseDown={handleMouseDownPassword}
-                                                    color="primary"
-                                                >
-                                                    {values.showConfirmPassword ? <Visibility /> : <VisibilityOff />}
-                                                </IconButton>
-                                            </InputAdornment>
-                                        }
+                                        value={confirmPassword}
+                                        onChange={e => setConfirmPassword(e.target.value)}
+                                        error={confirmPassword !== password}
+                                        helperText={confirmPassword !== password ? 'Senhas não correspondentes' : ' '}
                                     />
                                 </FormControl>
-                                        <Button variant="contained" size ="medium" color="primary" className={classes.margin}>
-                                            Cadastrar
-                                        </Button>
+                                <Button variant="contained" size="medium" color="primary" type="submit" className={classes.margin}>
+                                    <Typography>Cadastrar</Typography>
+                                </Button>
                             </form>
 
 

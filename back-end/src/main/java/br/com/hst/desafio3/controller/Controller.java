@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,12 +29,13 @@ import br.com.hst.desafio3.domain.User;
 import br.com.hst.desafio3.dto.CompanyDto;
 import br.com.hst.desafio3.dto.UserDto;
 import br.com.hst.desafio3.form.CompanyForm;
-import br.com.hst.desafio3.form.UpdateCompanyForm;
+import br.com.hst.desafio3.form.CompanyUpdateForm;
 import br.com.hst.desafio3.form.UserForm;
-import br.com.hst.desafio3.form.UpdateUserForm;
+import br.com.hst.desafio3.form.UserUpdateForm;
 import br.com.hst.desafio3.repository.CompanyRepository;
 import br.com.hst.desafio3.repository.UserRepository;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class Controller {
 
@@ -42,6 +44,7 @@ public class Controller {
 	
 	@Autowired
 	CompanyRepository companyRepository;
+	
 	
 	@PostMapping("/users") 
 	public ResponseEntity<UserDto> registerCustomer(@RequestBody @Valid UserForm form, UriComponentsBuilder uriBuilder) {
@@ -73,7 +76,7 @@ public class Controller {
 		
 		@PutMapping("/users/{id}")
 		@Transactional
-		public ResponseEntity<UserDto> updateUser(@PathVariable Long id, @RequestBody @Valid UpdateUserForm form,
+		public ResponseEntity<UserDto> updateUser(@PathVariable Long id, @RequestBody @Valid UserUpdateForm form,
 				UriComponentsBuilder uriBuilder) {
 			Optional<User> userOp = userRepository.findById(id);
 			if (userOp.isPresent()) {
@@ -123,7 +126,7 @@ public class Controller {
 		
 		@PutMapping("/companies/{id}")
 		@Transactional
-		public ResponseEntity<CompanyDto> updateCompany(@PathVariable Long id, @RequestBody @Valid UpdateCompanyForm form,
+		public ResponseEntity<CompanyDto> updateCompany(@PathVariable Long id, @RequestBody @Valid CompanyUpdateForm form,
 				UriComponentsBuilder uriBuilder) {
 			Optional<Company> companyOp = companyRepository.findById(id);
 			if (companyOp.isPresent()) {
