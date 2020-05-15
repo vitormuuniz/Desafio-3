@@ -74,8 +74,12 @@ export default function NewUser() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    const [companies, SetCompanies] = useState([]);
+    api.get('companies').then(response => {
+        SetCompanies(response.data);
+    });
 
-
+    console.log({companies});
     const classes = useStyles();
     const [values, setValues] = useState({
         showPassword: false
