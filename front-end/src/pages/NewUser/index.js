@@ -23,7 +23,6 @@ import hstLogo from '../../assets/logoHST.png';
 import './styles.css';
 
 
-
 const useStyles = makeStyles((theme) => ({
     margin: {
         margin: theme.spacing(1),
@@ -95,13 +94,6 @@ export default function NewUser() {
 
     async function handleNewUser(e) {
         e.preventDefault();
-
-        console.log({
-            company_id,
-            email,
-            name,
-            password,
-        })
 
         const data = ({
             company_id,
