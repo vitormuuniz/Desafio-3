@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import React, { useState, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
@@ -74,6 +74,10 @@ export default function NewUser() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    const [companies, setCompanies] = useState([]);
+    useEffect(() => {
+        api.get('companies').then(response => { setCompanies(response.data["content"]) })
+    }, []);
 
 
     const classes = useStyles();
@@ -88,29 +92,34 @@ export default function NewUser() {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
-     
-    async function handleNewUser(e){
-       e.preventDefault();
 
-       console.log({
-        company_id,
-        email,
-        name,
-        password,
-    })
+    async function handleNewUser(e) {
+        e.preventDefault();
 
-       const data = ({
-           company_id,
-           email,
-           name,
-           password,
-       })
-       try {
-        const response = await api.post('users', data);
-        alert(`Usuário cadastrado com sucesso ${response.data}`);
-       } catch (err) {
-           alert(`Erro ao cadastrar usuário` );
-       }
+        console.log({
+            company_id,
+            email,
+            name,
+            password,
+        })
+
+        const data = ({
+            company_id,
+            email,
+            name,
+            password,
+        })
+        try {
+            if (password === confirmPassword) {
+                const response = await api.post('users', data);
+                alert(`Usuário cadastrado com sucesso`);
+            }
+            else{
+                alert('Senhas não correspondentes!');
+            }
+        } catch (err) {
+            alert(`Erro ao cadastrar usuário`);
+        }
 
     }
 
@@ -171,9 +180,9 @@ export default function NewUser() {
                                     label="Empresa"
                                     helperText="Selecione sua empresa"
                                 >
-                                    <MenuItem value={39}>Emresa do seu Zé</MenuItem>
-                                    <MenuItem value={39}>Emresa do seu João</MenuItem>
-                                    <MenuItem value={39}>Emresa do seu Manoel</MenuItem>
+                                    {companies.map(company => (<MenuItem value={company.id}>{company.name}</MenuItem>))}
+
+
                                 </TextField>
 
                                 <FormControl className={clsx(classes.margin, classes.textField)}>
@@ -201,7 +210,7 @@ export default function NewUser() {
 
 
                                 <FormControl className={clsx(classes.margin, classes.textField)}>
-                                    
+
                                     <TextField
                                         id="standard-basic"
                                         label="Confirmar Senha"
