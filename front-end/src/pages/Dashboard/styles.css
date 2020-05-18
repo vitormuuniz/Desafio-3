@@ -20,18 +20,14 @@
     letter-spacing: 0.02em;
     text-transform: capitalize;
     
-    
-    
 }
 
 
 .new-dashboard-container{
-
-    width: 100%;
     max-width: 1120px;
     height: 100vh;
     margin: 0 auto;
-    display: flex;
+    display: table;
     justify-content: center;
     position: relative;
     width: 90%;
