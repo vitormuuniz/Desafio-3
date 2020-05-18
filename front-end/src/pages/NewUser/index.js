@@ -73,6 +73,7 @@ export default function NewUser() {
     const [confirmPassword, setConfirmPassword] = useState('');
 
     const [companies, setCompanies] = useState([]);
+    
     useEffect(() => {
         api.get('companies').then(response => { setCompanies(response.data["content"]) })
     }, []);

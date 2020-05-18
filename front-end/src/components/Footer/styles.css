@@ -1,13 +1,13 @@
 .footer{
     position: relative;
     display: inline-block;
-    width: 80%;
+    width: 90%;
     white-space: nowrap;
     bottom: 0;
     height: 40px;
     padding: 10px;
-    left: 10%;
-    right: 10%;
+    left: 5%;
+    right: 5%;
     margin: 0 auto;
     border-top: 2px solid #b3b0b0;
     background-color: #ffffff;
