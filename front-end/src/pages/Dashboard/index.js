@@ -85,61 +85,62 @@ export default function Dashboard(){
 
     return (
 
-    <div> 
+    <div className="content"> 
         <div className="box">  
             <a className="box-welcome">
                 Bem vindo!
             </a>    
         </div> 
-    <div className="new-dashboard-container">
-        <div className={classes.root}>
-            <Paper elevation={4} className={classes.paper}>
+
+        <div className="new-dashboard-container">
+            <div className={classes.root}>
+                <Paper elevation={4} className={classes.paper}>
                 
-                <div className={classes.containerPaper}>
-                    <SettingsIcon className={classes.iconSettings} color="primary" />
-                    <a className={classes.configPaper} id="config">Configurações</a>
-                </div>
+                    <div className={classes.containerPaper}>
+                        <SettingsIcon className={classes.iconSettings} color="primary" />
+                        <a className={classes.configPaper} id="config">Configurações</a>
+                    </div>
                
-                <div className={classes.containerPaper2} >
-                    <MenuItem className={classes.configPaper2} component={Link} to="/newcompany">Empresas</MenuItem>
-                </div>
-            </Paper>
+                    <div className={classes.containerPaper2} >
+                        <MenuItem className={classes.configPaper2} component={Link} to="/newcompany">Empresas</MenuItem>
+                    </div>
+                </Paper>
 
-            <Paper elevation={4} className={classes.paper}>
-                <div className={classes.containerPaper}>
-                    <SettingsIcon className={classes.iconSettings} color="primary" />
-                    <a className={classes.configPaper} id="config">Configurações</a>
-                </div>   
+                <Paper elevation={4} className={classes.paper}>
+                    <div className={classes.containerPaper}>
+                        <SettingsIcon className={classes.iconSettings} color="primary" />
+                        <a className={classes.configPaper} id="config">Configurações</a>
+                    </div>   
 
-                <div className={classes.containerPaper2} >  
-                    <MenuItem className={classes.configPaper2} component={Link} to="/newuser">Usuários</MenuItem>             
-                </div>
-            </Paper>
+                    <div className={classes.containerPaper2} >  
+                        <MenuItem className={classes.configPaper2} component={Link} to="/newuser">Usuários</MenuItem>             
+                    </div>
+                </Paper>
             
-            <Paper elevation={4} className={classes.paper}>
-                <div className={classes.containerPaper}>
-                    <SettingsIcon className={classes.iconSettings} color="primary" />
-                    <a className={classes.configPaper} id="config">Configurações</a>
-                </div>  
+                <Paper elevation={4} className={classes.paper}>
+                    <div className={classes.containerPaper}>
+                        <SettingsIcon className={classes.iconSettings} color="primary" />
+                        <a className={classes.configPaper} id="config">Configurações</a>
+                    </div>  
 
-                <div className={classes.containerPaper2} >
-                    <MenuItem className={classes.configPaper2} component={Link} to="/">Tabela de Informações</MenuItem>
-                </div>
-            </Paper>
+                    <div className={classes.containerPaper2} >
+                        <MenuItem className={classes.configPaper2} component={Link} to="/">Tabela de Informações</MenuItem>
+                    </div>
+                </Paper>
             
-            <Paper elevation={4} className={classes.paper}>
-                <div className={classes.containerPaper}>
-                    <SettingsIcon className={classes.iconSettings} color="primary" />
-                    <a className={classes.configPaper} id="config">Configurações</a>
-                </div>   
+                <Paper elevation={4} className={classes.paper}>
+                    <div className={classes.containerPaper}>
+                        <SettingsIcon className={classes.iconSettings} color="primary" />
+                        <a className={classes.configPaper} id="config">Configurações</a>
+                    </div>   
 
-                <div className={classes.containerPaper2} >
-                    <MenuItem className={classes.configPaper2} component={Link} to="/">Perfil</MenuItem>
-                </div>         
-            </Paper>
+                    <div className={classes.containerPaper2} >
+                        <MenuItem className={classes.configPaper2} component={Link} to="/">Perfil</MenuItem>
+                    </div>         
+                </Paper>
             
-        </div>    
-    </div>
+            </div>    
+        </div>
     </div> 
   );
 }
