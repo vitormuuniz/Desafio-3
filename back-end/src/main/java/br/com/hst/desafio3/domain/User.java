@@ -24,7 +24,7 @@ public class User {
 	private String email;
 	@Column(nullable = false, length = 60)
 	private String password;
-	@OneToOne(cascade=CascadeType.REMOVE)
+	@OneToOne
 	@JoinColumn(name = "company_id", nullable = false)
 	private Company company;
 	
