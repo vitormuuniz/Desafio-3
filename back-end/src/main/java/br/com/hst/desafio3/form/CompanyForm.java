@@ -5,7 +5,6 @@ import br.com.hst.desafio3.domain.Company;
 public class CompanyForm {
 	
 	private String name;
-	private int code;
 	private String phone;
 	private String type_company;
 	
@@ -14,12 +13,6 @@ public class CompanyForm {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public int getCode() {
-		return code;
-	}
-	public void setCode(int code) {
-		this.code = code;
 	}
 	public String getPhone() {
 		return phone;
@@ -35,6 +28,6 @@ public class CompanyForm {
 	}
 	
 	public Company returnCompany() {
-		return new Company(name, code, phone, type_company);
+		return new Company(name, phone, type_company);
 	}
 }

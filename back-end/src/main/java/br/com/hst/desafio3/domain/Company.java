@@ -17,8 +17,6 @@ public class Company {
 	
 	@Column(nullable = false, length = 60)
 	private String name;
-	@Column(nullable = false)
-	private int code;
 	@Column(nullable = false, length = 15)
 	private String phone;
 	@Column(nullable = false, length = 60)
@@ -27,9 +25,8 @@ public class Company {
 	public Company () {
 		
 	}
-	public Company(String name, int code, String phone, String type) {
+	public Company(String name, String phone, String type) {
 		this.name = name;
-		this.code = code;
 		this.phone = phone;
 		this.type_company = type;
 	}
@@ -48,14 +45,6 @@ public class Company {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getCode() {
-		return code;
-	}
-
-	public void setCode(int code) {
-		this.code = code;
 	}
 
 	public String getPhone() {
