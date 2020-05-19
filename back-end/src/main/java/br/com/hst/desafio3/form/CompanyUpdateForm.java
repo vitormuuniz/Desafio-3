@@ -6,7 +6,6 @@ import br.com.hst.desafio3.repository.CompanyRepository;
 public class CompanyUpdateForm {
 	
 	private String name;
-	private Integer code;
 	private String phone;
 	private String type_company;
 	
@@ -15,12 +14,6 @@ public class CompanyUpdateForm {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public Integer getCode() {
-		return code;
-	}
-	public void setCode(Integer code) {
-		this.code = code;
 	}
 	public String getPhone() {
 		return phone;
@@ -36,7 +29,7 @@ public class CompanyUpdateForm {
 	}
 	
 	public Company returnCompany() {
-		return new Company(name, code, phone, type_company);
+		return new Company(name, phone, type_company);
 	}
 	
 	public Company updateCompanyForm(Long id, CompanyRepository companyRepository) {
@@ -49,9 +42,6 @@ public class CompanyUpdateForm {
 		
 		if (name != null)
 			company.setName(name);
-
-		if (code != null)
-			company.setCode(code);
 
 		if (phone != null)
 			company.setPhone(phone);
