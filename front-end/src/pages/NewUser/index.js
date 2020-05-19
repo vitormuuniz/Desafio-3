@@ -20,8 +20,6 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import api from '../../services/api';
 
 import hstLogo from '../../assets/logoHST.png';
-import './styles.css';
-
 
 
 const useStyles = makeStyles((theme) => ({
@@ -81,6 +79,10 @@ export default function NewUser() {
     }, []);
 
 
+    companies.sort(function (string1, string2) { 
+        return (string1.name > string2.name) - (string1.name < string2.name) 
+    });
+
     const classes = useStyles();
     const [values, setValues] = useState({
         showPassword: false
@@ -97,13 +99,6 @@ export default function NewUser() {
     async function handleNewUser(e) {
         e.preventDefault();
 
-        console.log({
-            company_id,
-            email,
-            name,
-            password,
-        })
-
         const data = ({
             company_id,
             email,
@@ -115,7 +110,7 @@ export default function NewUser() {
                 const response = await api.post('users', data);
                 alert(`Usuário cadastrado com sucesso`);
             }
-            else{
+            else {
                 alert('Senhas não correspondentes!');
             }
         } catch (err) {
