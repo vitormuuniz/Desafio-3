@@ -8,14 +8,12 @@ public class CompanyDto {
 	
 	private Long id;
 	private String name;
-	private int code;
 	private String phone;
 	private String type_company;	
 	
 	public CompanyDto(Company company) {
 		this.id = company.getId();
 		this.name = company.getName();
-		this.code = company.getCode();
 		this.phone = company.getPhone();
 		this.type_company = company.getType_company();
 	}
@@ -34,12 +32,7 @@ public class CompanyDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getCode() {
-		return code;
-	}
-	public void setCode(int code) {
-		this.code = code;
-	}
+	
 	public String getPhone() {
 		return phone;
 	}
