@@ -78,7 +78,7 @@ export default function NewUser() {
         api.get('companies').then(response => { setCompanies(response.data["content"]) })
     }, []);
 
-
+    console.log(companies);
     companies.sort(function (string1, string2) { 
         return (string1.name > string2.name) - (string1.name < string2.name) 
     });

@@ -146,8 +146,8 @@ export default function SubHeader(){
                       <a className={classes.menuitem}>Nova Empresa</a>
                     </MenuItem>
 
-                    <MenuItem onClick={handleClose} component={Link} to="/newcompany">
-                    <a className={classes.menuitem}>Teste 2</a>
+                    <MenuItem onClick={handleClose} component={Link} to="/users">
+                    <a className={classes.menuitem}>Listar Usuários</a>
                     </MenuItem>
 
                     <MenuItem onClick={handleClose} component={Link} to="/newcompany">

@@ -94,6 +94,7 @@ export default function Dashboard(){
 
         <div className="new-dashboard-container">
             <div className={classes.root}>
+                <Link to="/newcompany">
                 <Paper elevation={4} className={classes.paper}>
                 
                     <div className={classes.containerPaper}>
@@ -102,10 +103,10 @@ export default function Dashboard(){
                     </div>
                
                     <div className={classes.containerPaper2} >
-                        <MenuItem className={classes.configPaper2} component={Link} to="/newcompany">Empresas</MenuItem>
+                        <MenuItem className={classes.configPaper2}>Empresas</MenuItem>
                     </div>
                 </Paper>
-
+                </Link>
                 <Paper elevation={4} className={classes.paper}>
                     <div className={classes.containerPaper}>
                         <SettingsIcon className={classes.iconSettings} color="primary" />
