@@ -34,17 +34,17 @@ class Card extends Component {
 
     render() {
         return ( 
-        <div class="dropdown" onClick = { this.showMenu }>
-            <button class="dropbtn">
-                <div class="container">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
+        <div className="dropdown" onClick = { this.showMenu }>
+            <button className="dropbtn">
+                <div className="container">
+                <div className="bar1"></div>
+                <div className="bar2"></div>
+                <div className="bar3"></div>
                 </div>
             </button>
 
             {   this.state.showMenu ?
-                    ( <div class="dropdown-content">
+                    ( <div className="dropdown-content">
                     <a href="#">Link 1</a>
                     <a href="#">Link 2</a>
                     <a href="#">Link 3</a>

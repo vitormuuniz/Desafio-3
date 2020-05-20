@@ -73,16 +73,18 @@ export default function NewUser() {
     const [confirmPassword, setConfirmPassword] = useState('');
 
     const [companies, setCompanies] = useState([]);
+    
     useEffect(() => {
-        api.get('companies').then(response => { setCompanies(response.data["content"]) })
+        api.get('companies').then(response => { setCompanies(response.data) })
     }, []);
 
-
+    console.log(companies);
     companies.sort(function (string1, string2) { 
         return (string1.name > string2.name) - (string1.name < string2.name) 
     });
 
     const classes = useStyles();
+    
     const [values, setValues] = useState({
         showPassword: false
     });
