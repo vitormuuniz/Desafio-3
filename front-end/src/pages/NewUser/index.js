@@ -73,18 +73,18 @@ export default function NewUser() {
     const [confirmPassword, setConfirmPassword] = useState('');
 
     const [companies, setCompanies] = useState([]);
-    
+
     useEffect(() => {
         api.get('companies').then(response => { setCompanies(response.data) })
     }, []);
 
     console.log(companies);
-    companies.sort(function (string1, string2) { 
-        return (string1.name > string2.name) - (string1.name < string2.name) 
+    companies.sort(function (string1, string2) {
+        return (string1.name > string2.name) - (string1.name < string2.name)
     });
 
     const classes = useStyles();
-    
+
     const [values, setValues] = useState({
         showPassword: false
     });
@@ -108,9 +108,9 @@ export default function NewUser() {
         })
         try {
             if (password === confirmPassword) {
-                const response = await api.post('users', data);
-                alert(`Usuário cadastrado com sucesso`);
-            }
+                    const response = await api.post('users', data);
+                    alert(`Usuário cadastrado com sucesso`);
+                }
             else {
                 alert('Senhas não correspondentes!');
             }
@@ -132,7 +132,7 @@ export default function NewUser() {
 
                         <Grid item className={classes.gridItem} xs >
 
-                            <form onSubmit={handleNewUser} className={classes.root} noValidate autoComplete="off">
+                            <form onSubmit={handleNewUser} className={classes.root} autoComplete="off">
                                 <TextField
                                     className={classes.margin}
                                     id="name"
