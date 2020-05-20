@@ -2,6 +2,7 @@ package br.com.hst.desafio3.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -56,13 +57,12 @@ public class Controller {
 	}
 
 		@GetMapping("/users") // dto = saem da api e é retornado para o cliente
-		public Page<UserDto> listAllCustomers(@RequestParam(required = false) String name,
-				@PageableDefault(sort = "id", direction = Direction.DESC, page = 0, size = 10) Pageable pagination) throws URISyntaxException {
+		public ResponseEntity<List<UserDto>> listAllCustomers(@RequestParam(required = false) String name) throws URISyntaxException {
 
 			if (name == null) 
-				return UserDto.converter(userRepository.findAll(pagination));
+				return ResponseEntity.ok(UserDto.converter(userRepository.findAll()));
 			else
-				return UserDto.converter(userRepository.findByName(name, pagination));
+				return ResponseEntity.ok(UserDto.converter(userRepository.findByName(name)));
 		}
 
 		@GetMapping("/users/{id}")

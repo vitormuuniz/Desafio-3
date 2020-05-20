@@ -1,18 +1,21 @@
 package br.com.hst.desafio3.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 
 import br.com.hst.desafio3.domain.Company;
 import br.com.hst.desafio3.domain.User;
 
 public class UserDto {
-	
+
 	private Long id;
 	private String name;
 	private String email;
 	private String password;
 	private Company company;
-	
+
 	public UserDto(User user) {
 		this.id = user.getId();
 		this.name = user.getName();
@@ -20,7 +23,7 @@ public class UserDto {
 		this.password = user.getPassword();
 		this.company = user.getCompany();
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -32,17 +35,24 @@ public class UserDto {
 	public String getName() {
 		return name;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public Company getCompany() {
 		return company;
 	}
-	
-	public static Page<UserDto> converter(Page<User> user) {
-		return user.map(UserDto::new);
+
+	public static List<UserDto> converter(List<User> userList) {
+		List<UserDto> userDtoList = new ArrayList<>();
+		for (User usr : userList) {
+			userDtoList.add(new UserDto(usr));
+		}
+		return userDtoList;
 	}
 }
