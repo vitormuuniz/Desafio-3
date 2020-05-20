@@ -75,7 +75,7 @@ export default function NewUser() {
     const [companies, setCompanies] = useState([]);
     
     useEffect(() => {
-        api.get('companies').then(response => { setCompanies(response.data["content"]) })
+        api.get('companies').then(response => { setCompanies(response.data) })
     }, []);
 
     console.log(companies);

@@ -78,7 +78,7 @@ const options = {
 
     textLabels: {
         body: {
-          noMatch: "Desculpe, nada foi encontrado",
+          noMatch: "Digita certo animal, isso não existe",
           toolTip: "Ordenar",
           columnHeaderTooltip: column => `Ordenar por ${column.label}`
         },
@@ -112,7 +112,7 @@ export default function DisplayUsers() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        api.get('users').then(response => { setUsers(response.data["content"]) })
+        api.get('users').then(response => { setUsers(response.data) })
     }, []);
 
     console.log(users);
