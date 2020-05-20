@@ -9,7 +9,6 @@
 	3 - Model the application architeture in micro-services
 
 		Application Requeriments:
-		
 			1 - Have at least 3 pages (index, companies, users);
 			2 - Every page must have: header, menu, body(content) and footer;
 			3 - Front-end must be done in React;
