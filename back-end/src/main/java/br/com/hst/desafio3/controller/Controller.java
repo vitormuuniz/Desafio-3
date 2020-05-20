@@ -105,14 +105,12 @@ public class Controller {
 			return ResponseEntity.created(uri).body(new CompanyDto(company));
 		}
 		
-		@GetMapping("/companies")
-		public Page<CompanyDto> listAllCompanies(@RequestParam(required = false) String name,
-				@PageableDefault(sort = "id", direction = Direction.DESC, page = 0, size = 10) Pageable pagination) throws URISyntaxException {
-
+		@GetMapping("/users") // dto = saem da api e é retornado para o cliente
+		public ResponseEntity<List<CompanyDto>> listAllCompanies(@RequestParam(required = false) String name) throws URISyntaxException {
 			if (name == null) 
-				return CompanyDto.converter(companyRepository.findAll(pagination));
+				return ResponseEntity.ok(CompanyDto.converter(companyRepository.findAll()));
 			else
-				return CompanyDto.converter(companyRepository.findByName(name, pagination));
+				return ResponseEntity.ok(CompanyDto.converter(companyRepository.findByName(name)));
 		}
 		
 		@GetMapping("/companies/{id}")
