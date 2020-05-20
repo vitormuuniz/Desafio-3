@@ -33,7 +33,7 @@ export default function Header() {
 
     return (
         <header id="main-header">
-            <div className="headerClass">
+            <div class="headerClass">
                 <Button className={classes.buttonIcon} component={Link} to="/" >
                    <HomeIcon className={classes.homeicon} /> 
                 </Button>

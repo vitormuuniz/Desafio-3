@@ -30,7 +30,7 @@ import api from '../../services/api';
 const columns = [
     {
      name: "name",
-     label: "Name",
+     label: "Nome",
      options: {
       filter: true,
       sort: true,
@@ -63,18 +63,7 @@ const columns = [
     
    ];
 
-function createData(name, email, company) {
-    return { name, email, company };
-}
 
-const rows = [
-    createData("Vinicius", "vinicius@teste.com", "HST"),
-    createData("Marcos", "marcos@teste.com", "HST"),
-    createData("Vitor", "vitor@teste.com", "HST"),
-    createData("Murilo", "Murilo@teste.com", "HST"),
-    createData("Isabela", "Isabela@teste.com", "HST"),
-
-];
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -88,25 +77,57 @@ const useStyles = makeStyles((theme) => ({
     },
 
     paper: {
-        width: "80%",
+        width: "70%",
         minHeight: "70%",
         alignItems: 'center',
         margin: "auto",
+        position:"absolute"
     },
-    button: {
-        position: "relative",
-        bottom: "0",
-    }
+    
 
 
 }));
 
-export default function StickyHeadTable() {
-    const classes = useStyles();
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+const options = {
+    selectableRows: 'none',
+    rowsPerPage: 5,
+    rowsPerPageOptions:[5,10,20],
+    filter:false,
+    responsive:'scrollMaxHeight',
 
-    const [search, setSearch] = useState('');
+    textLabels: {
+        body: {
+          noMatch: "Desculpe, nada foi encontrado",
+          toolTip: "Ordenar",
+          columnHeaderTooltip: column => `Ordenar por ${column.label}`
+        },
+        pagination: {
+          next: "Próxima página",
+          previous: "Página anterior",
+          rowsPerPage: "Linhas por página",
+          displayRows: "de",
+        },
+        toolbar: {
+          search: "Pesquisar",
+          downloadCsv: "Baixar CSV",
+          print: "Imprimir",
+          viewColumns: "Ver colunas",
+          filterTable: "Filtrar tabela",
+        },
+        filter: {
+          all: "Todos",
+          title: "FILTROS",
+          reset: "REINICIAR",
+        },
+        viewColumns: {
+          title: "Mostrar Colunas",
+          titleAria: "Mostrar/Esconder colunas",
+        },
+    }
+  };
+
+export default function DisplayUsers() {
+    const classes = useStyles();
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -128,12 +149,12 @@ export default function StickyHeadTable() {
         <div className="newRegister-container">
             <Paper className={classes.paper} elevation={0}>
                 <MUIDataTable
-                    selectableRows = "none"
                     title={"Lista de Usuários"}
                     data={usersObj}
                     columns={columns}
+                    options={options}
                 />
-            </Paper>
+          </Paper>
         </div >
     );
 }
