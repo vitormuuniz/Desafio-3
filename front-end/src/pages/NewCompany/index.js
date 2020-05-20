@@ -67,18 +67,16 @@ export default function NewCompany(){
 
     async function handleNewCompany(e){
         e.preventDefault();
-        const code = 1;
+        
  
         console.log({
             name,
-            code,
             phone,
             type_company
      })
  
         const data = ({
             name,
-            code,
             phone,
             type_company
         })
