@@ -105,7 +105,7 @@ public class Controller {
 			return ResponseEntity.created(uri).body(new CompanyDto(company));
 		}
 		
-		@GetMapping("/companies") // dto = saem da api e é retornado para o cliente
+		@GetMapping("/companies") 
 		public ResponseEntity<List<CompanyDto>> listAllCompanies(@RequestParam(required = false) String name) throws URISyntaxException {
 			if (name == null) 
 				return ResponseEntity.ok(CompanyDto.converter(companyRepository.findAll()));

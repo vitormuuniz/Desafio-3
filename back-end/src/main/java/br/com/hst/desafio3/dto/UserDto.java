@@ -50,9 +50,7 @@ public class UserDto {
 
 	public static List<UserDto> converter(List<User> userList) {
 		List<UserDto> userDtoList = new ArrayList<>();
-		for (User usr : userList) {
-			userDtoList.add(new UserDto(usr));
-		}
+		userList.forEach(user -> userDtoList.add(new UserDto(user)));
 		return userDtoList;
 	}
 }

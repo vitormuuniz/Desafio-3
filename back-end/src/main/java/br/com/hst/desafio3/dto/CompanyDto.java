@@ -53,9 +53,7 @@ public class CompanyDto {
 	
 	public static List<CompanyDto> converter(List<Company> companyList) {
 		List<CompanyDto> companyDtoList = new ArrayList<>();
-		for (Company company : companyList) {
-			companyDtoList.add(new CompanyDto(company));
-		}
+		companyList.forEach(company -> companyDtoList.add(new CompanyDto(company)));
 		return companyDtoList;
 	}
 }
