@@ -3,27 +3,8 @@ import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TablePagination,
-    TableRow
-} from '@material-ui/core';
-
-import Grid from "@material-ui/core/Grid";
-
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import { IconButton, InputAdornment, FormControl } from "@material-ui/core";
-import Search from "@material-ui/icons/Search";
-import clsx from 'clsx';
 
 import MUIDataTable from "mui-datatables";
-import Button from "@material-ui/core/Button";
-import AddIcon from '@material-ui/icons/Add';
 
 import api from '../../services/api';
 
