@@ -1,8 +1,12 @@
 package br.com.hst.desafio3.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 
 import br.com.hst.desafio3.domain.Company;
+import br.com.hst.desafio3.domain.User;
 
 public class CompanyDto {
 	
@@ -47,7 +51,11 @@ public class CompanyDto {
 		this.type_company = type_company;
 	}
 	
-	public static Page<CompanyDto> converter(Page<Company> user) {
-		return user.map(CompanyDto::new);
+	public static List<CompanyDto> converter(List<Company> companyList) {
+		List<CompanyDto> companyDtoList = new ArrayList<>();
+		for (Company company : companyList) {
+			companyDtoList.add(new CompanyDto(company));
+		}
+		return companyDtoList;
 	}
 }
