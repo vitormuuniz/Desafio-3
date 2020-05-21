@@ -111,7 +111,7 @@ export default function NewUser() {
         
         try {
             if (password === confirmPassword) {
-                    const response = await api.post('users', data);
+                    await api.post('users', data);
                     setname('');
                     setemail('');
                     setPassword('');
