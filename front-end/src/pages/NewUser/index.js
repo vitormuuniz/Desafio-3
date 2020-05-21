@@ -74,9 +74,7 @@ export default function NewUser() {
 
     const [companies, setCompanies] = useState([]);
 
-    useEffect(() => {
-        api.get('companies').then(response => { setCompanies(response.data) })
-    }, []);
+    
 
     console.log(companies);
     companies.sort(function (string1, string2) {
@@ -99,16 +97,22 @@ export default function NewUser() {
 
     async function handleNewUser(e) {
         e.preventDefault();
-
+        
+        
         const data = ({
             company_id,
             email,
             name,
             password,
         })
+        
         try {
             if (password === confirmPassword) {
                     const response = await api.post('users', data);
+                    setname('');
+                    setemail('');
+                    setPassword('');
+                    setConfirmPassword('');
                     alert(`Usuário cadastrado com sucesso`);
                 }
             else {
