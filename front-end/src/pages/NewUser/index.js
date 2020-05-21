@@ -74,7 +74,9 @@ export default function NewUser() {
 
     const [companies, setCompanies] = useState([]);
 
-    
+    useEffect(() => {
+        api.get('companies').then(response => { setCompanies(response.data) })
+    }, []);
 
     console.log(companies);
     companies.sort(function (string1, string2) {
@@ -94,6 +96,7 @@ export default function NewUser() {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
 
     async function handleNewUser(e) {
         e.preventDefault();
