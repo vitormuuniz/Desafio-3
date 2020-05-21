@@ -83,23 +83,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
 
-
-    const preventDefault = (event) => event.preventDefault();
-
     const classes = useStyles();
-
- 
 
     return (
 
-        <div className="content">
-            <div className="box">
-                <a className="box-welcome">
+        <div class="content">
+            <div class="box">
+                <a class="box-welcome">
                     Bem vindo!
             </a>
             </div>
 
-            <div className="new-dashboard-container">
+            <div class="new-dashboard-container">
                 <div className={classes.root}>
 
                     <Paper elevation={4} className={classes.paper} component={Link} to="/newcompany" >
