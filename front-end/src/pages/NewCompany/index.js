@@ -81,8 +81,10 @@ export default function NewCompany(){
             type_company
         })
         try {
-         const response = await api.post('companies', data);
-         alert(`Empresa cadastrada com sucesso ${response.data}`);
+         await api.post('companies', data);
+         alert(`Empresa cadastrada com sucesso `);
+         setname('');
+         setphone('');
         } catch (err) {
             alert(`Erro ao cadastrar empresa` );
         }
@@ -100,7 +102,7 @@ export default function NewCompany(){
                             </Grid>
                             
                             <Grid item className={classes.gridItem} xs >
-                                <form onSubmit={handleNewCompany} className={classes.root} noValidate autoComplete="off">
+                                <form onSubmit={handleNewCompany} className={classes.root} autoComplete="off">
                                     <TextField
                                         className={classes.margin}
                                         id="name"
