@@ -3,10 +3,7 @@ package br.com.hst.desafio3.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-
 import br.com.hst.desafio3.domain.Company;
-import br.com.hst.desafio3.domain.User;
 
 public class CompanyDto {
 	
