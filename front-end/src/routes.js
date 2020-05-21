@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import NewUser from './pages/NewUser';
 import NewCompany from './pages/NewCompany';
 import DisplayUsers from './pages/DisplayUsers';
+import DisplayCompanies from './pages/DisplayCompanies';
 import SubHeader from './components/Sub-Header';
 import Header from './components/Header';
 
@@ -20,6 +21,7 @@ export default function Routes(){
                 <Route path="/newuser" component={NewUser} />
                 <Route path="/newcompany" component={NewCompany} />
                 <Route path="/users" component={DisplayUsers} />
+                <Route path="/companies" component={DisplayCompanies} />
                 
             </Switch>
         </BrowserRouter>

@@ -18,7 +18,6 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 
 import '../../global.css';
-import "./styles.css";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -150,8 +149,8 @@ export default function SubHeader(){
                     <a className={classes.menuitem}>Listar Usuários</a>
                     </MenuItem>
 
-                    <MenuItem onClick={handleClose} component={Link} to="/newcompany">
-                      <a className={classes.menuitem}>Teste 2</a>
+                    <MenuItem onClick={handleClose} component={Link} to="/companies">
+                      <a className={classes.menuitem}>Listar Empresas</a>
                     </MenuItem>
 
                   </MenuList>

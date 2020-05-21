@@ -11,37 +11,29 @@ import api from '../../services/api';
 const columns = [
     {
      name: "name",
-     label: "Nome",
+     label: "Empresa",
      options: {
       filter: true,
       sort: true,
      }
     },
     {
-     name: "email",
-     label: "Email",
+     name: "phone",
+     label: "Telefone",
      options: {
       filter: true,
-      sort: true,
+      sort: false,
      }
     },
     {
-     name: "company",
-     label: "Company",
+     name: "type_company",
+     label: "Tipo",
      options: {
       filter: true,
       sort: true,
      }
     },
-    {   
-        name: "company_type",
-        label: "Tipo de Empresa",
-        options: {
-         filter: true,
-         sort: true,
-        }
-       },
-    
+  
    ];
 
 
@@ -78,7 +70,7 @@ const options = {
 
     textLabels: {
         body: {
-          noMatch: "Usuário não encontrado",
+          noMatch: "Empresa não encontrada",
           toolTip: "Ordenar",
           columnHeaderTooltip: column => `Ordenar por ${column.label}`
         },
@@ -109,29 +101,18 @@ const options = {
 
 export default function DisplayUsers() {
     const classes = useStyles();
-    const [users, setUsers] = useState([]);
+    const [companies, setCompanies] = useState([]);
 
     useEffect(() => {
-        api.get('users').then(response => { setUsers(response.data) })
+        api.get('companies').then(response => { setCompanies(response.data) })
     }, []);
-
-    console.log(users);
-    var usersObj = [];
-    users.map(user => {
-            var obj={};
-            obj["name"]=user.name;
-            obj["email"] = user.email;
-            obj["company"] = user.company.name;
-            obj["company_type"] = user.company.type_company;
-            usersObj.push(obj);
-    });
-    console.log(usersObj);
+    
     return (
         <div className="newRegister-container">
             <Paper className={classes.paper} elevation={0}>
                 <MUIDataTable
-                    title={"Lista de Usuários"}
-                    data={usersObj}
+                    title={"Lista de Empresas"}
+                    data={companies}
                     columns={columns}
                     options={options}
                 />
