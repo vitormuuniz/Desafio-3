@@ -32,8 +32,10 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         borderRadius: "4px",
         display: "space-around",
+        textDecoration: "inherit",
         '&:hover': {
             background: "#f3f0f0",
+            textDecoration: "inherit",
          },
     },
 
@@ -134,11 +136,11 @@ export default function Dashboard() {
                     <Paper elevation={4} className={classes.paper} component={Link} to="/companies">
                         <div className={classes.containerPaper}>
                             <SettingsIcon className={classes.iconSettings} color="primary" />
-                            <a className={classes.configPaper} id="config">Configurações</a>
+                            <Typography className={classes.configPaper} id="config" >Configurações</Typography>
                         </div>
 
                         <div className={classes.containerPaper2} >
-                            <Typography className={classes.configPaper2} >Lista de Empresa</Typography>
+                            <Typography className={classes.configPaper2}>Lista de Empresa</Typography>
                         </div>
                     </Paper>
 
